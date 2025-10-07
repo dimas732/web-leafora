@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Produk Sayur - Vegefoods</title>
+    <link rel="stylesheet" href="Stylekategori.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="header__logo">
+            <img src="img/leafora.png" alt="LEAFORA">
+            <span>LEAFORA</span>
+        </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="Page_sayur.html">Sayur</a></li>
+          <li class="nav-item"><a class="nav-link" href="Page_Lauk.html">Lauk</a></li>
+          <li class="nav-item"><a class="nav-link" href="Page_Buah.html">Buah</a></li>
+          <li class="nav-item"><a class="nav-link" href="page_bumbu.html">Bumbu</a></li>
+          <li class="nav-item"><a class="nav-link" href="page_bahan_pokok.html">Bahan Pokok</a></li>
+          <li class="nav-item"><a class="nav-link" href="produklain.html">Produk Lainnya</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-4">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white p-2">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Produk Pokok</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Produk Sayur -->
+    <section class="product-section container">
+      <h2 class="section-title mb-4">Produk Pokok</h2>
+      <div class="row">
+
+        <!-- 1 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/beras.jpeg" alt="Beras" />
+              <div class="product-action">
+                <button onclick="addToCart('Beras', 76000, 'img/beras.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>Beras</h5>
+              <p class="price">Rp 76.000 / 5kg</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/minyak_goreng.jpeg" alt="Minyak Goreng" />
+              <div class="product-action">
+                <button onclick="addToCart('Minyak Goreng 2 Liter', 9000, 'img/minyak_goreng.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>Minyak Goreng 2 Liter</h5>
+              <p class="price">Rp 44.000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/telur.jpeg" alt="Telur" />
+              <div class="product-action">
+                <button onclick="addToCart('Telur Ayam', 8000, 'img/telur.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>Telur Ayam</h5>
+              <p class="price">Rp 13.000 / 500g</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/Kecap.jpeg" alt="Kecap" />
+              <div class="product-action">
+                <button onclick="addToCart('Kecap', 8000, 'img/Kecap.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>Kecap</h5>
+              <p class="price">Rp 14.000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/indomie.jpeg" alt="indomie Goreng" />
+              <div class="product-action">
+                <button onclick="addToCart('indomie Goreng', 2500, 'img/indomie.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>indomie Goreng</h5>
+              <p class="price">Rp 2.500</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/tepung_terigu.jpeg" alt="Tepung Terigu" />
+              <div class="product-action">
+                <button onclick="addToCart('Tepung Terigu 1 Kg', 12000, 'img/tepung_terigu.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>Tepung Terigu 1 Kg</h5>
+              <p class="price">Rp 12.000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/saos_sambel.jpeg" alt="Saos Sambel" />
+              <div class="product-action">
+                <button onclick="addToCart('Saos Sambel', 24000, 'img/saos_sambel.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>Saos Sambel</h5>
+              <p class="price">Rp 24.000 / 500g</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/tepung_tapioka.jpeg" alt="Tepung Tapioka 1kg" />
+              <div class="product-action">
+                <button onclick="addToCart('Tepung Tapioka 1kg', 11000, 'img/tepung_tapioka.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h5>Tepung Tapioka 1kg</h5>
+              <p class="price">Rp 11.000</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-4 mt-5">
+      <p>© 2025 LeaFora. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+    function addToCart(name, price, image) {
+    // Ambil keranjang dari localStorage (kalau belum ada, buat array kosong)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Cek apakah produk sudah ada di keranjang
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.quantity += 1; // kalau sudah ada, tambah jumlahnya
+    } else {
+        cart.push({ name, price, image, quantity: 1 }); // kalau belum ada, masukkan produk baru
+    }
+
+    // Simpan kembali ke localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert(`${name} telah ditambahkan ke keranjang!`);
+    }
+    </script>
+
+</body>
+</html>

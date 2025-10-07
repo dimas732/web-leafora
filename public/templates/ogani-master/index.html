@@ -21,6 +21,28 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        #notif {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #16C47F;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: none;
+            animation: fadeInOut 2s ease;
+            z-index: 9999;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(-10px); }
+            20% { opacity: 1; transform: translateY(0); }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+    </style>
 </head>
 
 <body>
@@ -92,9 +114,38 @@
     <header class="header">
         <div class="header__top">
             <div class="container">
-                    <div class="header__top__right__auth">
-                        <a href="login.html"><i class="fa fa-user"></i> Login</a>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li>Free Shipping for all Order of $99</li>
+                            </ul>
+                        </div>
                     </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="login.html"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -150,18 +201,11 @@
                             <span>KATEGORI</span>
                         </div>
                         <ul>
-<<<<<<< HEAD
-                            <li><a href="Page_Buah.html">Buah</a></li>
+                            <li><a href="cobabuah.html">Buah</a></li>
                             <li><a href="Page_sayur.html">Sayur</a></li>
                             <li><a href="Page_Lauk.html">Lauk</a></li>
-                            <li><a href="#">Bumbu</a></li>
-=======
-                            <li><a href="cobabuah.html">Buah</a></li>
-                            <li><a href="Cobasayur.html">Sayur</a></li>
-                            <li><a href="#">Lauk</a></li>
                             <li><a href="bumbu_page.html">Bumbu</a></li>
->>>>>>> ba5263aaeb061fdc40a3607292eab87c49cf390b
-                            <li><a href="#">Produk Fresh lain</a></li>
+                            <li><a href="page_fresh_produk.html">Produk Fresh lain</a></li>
                             <li><a href="#">Bahan Pokok</a></li>
                         </ul>
                     </div>
@@ -183,7 +227,7 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+62 331 789 101</h5>
+                                <h5>+65 11.188.888</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>
@@ -269,7 +313,7 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">Brokoli</a></h6>
-                            <h5>Rp 7.000</h5>
+                            <h5>Rp 7.000,00</h5>
                         </div>
                     </div>
                 </div>
@@ -279,12 +323,12 @@
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="#" onclick="addToCart('Brokoli', 7000); return false;"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">Wortel</a></h6>
-                            <h5>Rp 3.000</h5>
+                            <h5>Rp 3.000,00</h5>
                         </div>
                     </div>
                 </div>
@@ -314,7 +358,7 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">Daging mentah 1 kg</a></h6>
-                            <h5>Rp 120.000</h5>
+                            <h5>Rp 120.000,00</h5>
                         </div>
                     </div>
                 </div>
@@ -329,7 +373,7 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">Alpukat 1 kg</a></h6>
-                            <h5>Rp 35.000</h5>
+                            <h5>Rp 35.000,00</h5>
                         </div>
                     </div>
                 </div>
@@ -344,7 +388,7 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">Minyak 1 liter</a></h6>
-                            <h5>Rp 34.000</h5>
+                            <h5>Rp 34.000,00</h5>
                         </div>
                     </div>
                 </div>
@@ -374,13 +418,16 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">Pisang</a></h6>
-                            <h5>Rp20.000</h5>
+                            <h5>Rp20.000,00</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Notification -->
+    <div id="notif"></div>
     <!-- Featured Section End -->
 
     <!-- Banner Begin -->
@@ -460,10 +507,10 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/masakorenteng.jpg" alt="">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Masako ayam 1 renteng</h6>
+                                        <h6>Masako 1 renteng</h6>
                                         <span>Rp 6.000,00</span>
                                     </div>
                                 </a>
@@ -478,7 +525,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/telur_ayam.png" alt="">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Telur ayam</h6>
@@ -487,7 +534,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/ceker-removebg-preview.png" alt="">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Ceker tanpa tulang</h6>
@@ -496,7 +543,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/Cabe-Rawit.jpg" alt="">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Cabe Rawit</h6>
@@ -507,7 +554,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/Tomato.jpg" alt="">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Tomat</h6>
@@ -516,16 +563,16 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/beras1kg.png" alt="">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Beras 1 kg</h6>
-                                        <span>Rp 17.000,00</span>
+                                        <span>Rp 15.000,00</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/minyakkita.jpg" alt="">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Minyak kita</h6>
@@ -543,7 +590,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/kangkung.jpg" alt="">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>kangkung</h6>
@@ -552,7 +599,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/ceker-removebg-preview.png" alt="">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Ceker tanpa tulang</h6>
@@ -561,7 +608,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/apel1.jpg" alt="">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Apel</h6>
@@ -572,7 +619,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/bawangmerah.jpg" alt="">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Bawang merah</h6>
@@ -581,7 +628,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/beraspandan.jpg" alt="">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Beras Pandan Wangi</h6>
@@ -590,7 +637,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/kacangtanah.jpg" alt="">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Kacang Tanah Kupas</h6>
@@ -744,6 +791,12 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+
+    </script>
+
+
 
 
 
