@@ -188,19 +188,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
     function addToCart(name, price, image) {
-    // Ambil keranjang dari localStorage (kalau belum ada, buat array kosong)
+    
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Cek apakah produk sudah ada di keranjang
     const existing = cart.find(item => item.name === name);
 
     if (existing) {
-        existing.quantity += 1; // kalau sudah ada, tambah jumlahnya
+        existing.quantity += 1; 
     } else {
-        cart.push({ name, price, image, quantity: 1 }); // kalau belum ada, masukkan produk baru
+        cart.push({ name, price, image, quantity: 1 }); 
     }
 
-    // Simpan kembali ke localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 
     alert(`${name} telah ditambahkan ke keranjang!`);
