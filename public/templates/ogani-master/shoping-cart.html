@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
 </head>
 
 <body>
@@ -240,85 +241,21 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
-                        <table>
+                        <h2>Keranjang Belanja</h2>
+                        <table id="cart-table">
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">Products</th>
+                                    <th></th>
+                                    <th>Nama Produk</th>
                                     <th>Harga</th>
                                     <th>Jumlah</th>
-                                    <th>Total Harga</th>
-                                    <th></th>
+                                    <th>Total</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/product/details/parselbuah.jpg" alt="parsel">
-                                        <h5>Paket Buah Segar</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        Rp85.000,00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="Sub total belanja">
-                                        Rp85.000,00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/product/beraspulen.png" alt="">
-                                        <h5>Beras Desa PS</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        Rp51.200,00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        Rp51.200,00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/product/cumi.jpg" alt="">
-                                        <h5>Cumi-cumi 250 gr</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        Rp20.000,00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="2">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        Rp40.000,00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="cart-body"></tbody>
                         </table>
+                        <!-- <p id="total-harga"></p> -->
                     </div>
                 </div>
             </div>
@@ -345,8 +282,8 @@
                     <div class="shoping__checkout">
                         <h5>Total belanja</h5>
                         <ul>
-                            <li>Subtotal <span>Rp176.200,00</span></li>
-                            <li>Total <span>Rp176.200,00</span></li>
+                            <li>Subtotal <span id="total-harga"></span></li>
+                            <li>Total <span id="total-harga"></span></li>
                         </ul>
                         <a href="#" class="primary-btn">LANJUTKAN CHECKOUT</a>
                     </div>
@@ -425,6 +362,60 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script>
+        function loadCart() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartBody = document.getElementById('cart-body');
+        const totalHarga = document.getElementById('total-harga');
+        cartBody.innerHTML = '';
+
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const totalItem = item.price * item.quantity;
+            total += totalItem;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td><img src="${item.image}" alt="${item.name}" width="60"></td>
+            <td>${item.name}</td>
+            <td>Rp ${item.price.toLocaleString()}</td>
+            <td>
+                <button onclick="updateQuantity(${index}, -1)">-</button>
+                <span>${item.quantity}</span>
+                <button onclick="updateQuantity(${index}, 1)">+</button>
+            </td>
+            <td>Rp ${totalItem.toLocaleString()}</td>
+            <td><button onclick="removeItem(${index})" class="btn btn-danger">Hapus</button></td>
+            `;
+            cartBody.appendChild(row);
+        });
+
+        totalHarga.textContent = `Rp ${total.toLocaleString()}`;
+        }
+
+        function updateQuantity(index, change) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart[index].quantity += change;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+        }
+
+        function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+        }
+
+        window.onload = loadCart;
+    </script>
+
+
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
@@ -433,6 +424,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
 
 </body>
 </html>

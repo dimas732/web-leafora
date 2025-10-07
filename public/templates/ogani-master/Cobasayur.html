@@ -49,7 +49,7 @@
             <div class="product-img">
               <img src="img/featured/brokoli.jpg" alt="Brokoli" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Brokoli', 7000, 'img/featured/brokoli.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -65,7 +65,7 @@
             <div class="product-img">
               <img src="img/featured/wortel.jpg" alt="Wortel" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Wortel', 3000, 'img/featured/wortel.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -81,7 +81,7 @@
             <div class="product-img">
               <img src="img/latest-product/bayam.jpg" alt="Bayam" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Bayam Hijau', 2000, 'img/latest-product/bayam.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -97,7 +97,7 @@
             <div class="product-img">
               <img src="img/latest-product/Tomato.jpg" alt="Tomat" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Tomat', 8000, 'img/latest-product/Tomato.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -113,7 +113,7 @@
             <div class="product-img">
               <img src="img/latest-product/Cabe-Rawit.jpg" alt="Cabai Rawit" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Cabai Rawit', 23000, 'img/latest-product/Cabe-Rawit.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -129,7 +129,7 @@
             <div class="product-img">
               <img src="img/latest-product/kangkung.jpg" alt="Kangkung" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Kangkung Segar', 3000, 'img/latest-product/kangkung.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -145,7 +145,7 @@
             <div class="product-img">
               <img src="img/product/okra1.png" alt="Okra" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Sayur Okra', 17000, 'img/product/okra1.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -161,7 +161,7 @@
             <div class="product-img">
               <img src="img/product/jagung.png" alt="Jagung Manis" />
               <div class="product-action">
-                <button class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Jagung Manis', 8500, 'img/product/jagung.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -182,5 +182,26 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+    function addToCart(name, price, image) {
+    // Ambil keranjang dari localStorage (kalau belum ada, buat array kosong)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Cek apakah produk sudah ada di keranjang
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.quantity += 1; // kalau sudah ada, tambah jumlahnya
+    } else {
+        cart.push({ name, price, image, quantity: 1 }); // kalau belum ada, masukkan produk baru
+    }
+
+    // Simpan kembali ke localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert(`${name} telah ditambahkan ke keranjang!`);
+    }
+    </script>
+
 </body>
 </html>
