@@ -48,7 +48,7 @@
                                 Overview
                             </div>
                             <h2 class="page-title">
-                                Vertical layout
+                                Admin - User
                             </h2>
                         </div>
                         <!-- Page title actions -->

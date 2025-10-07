@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('Admin.User.index');
+        // dd(User::get());
+        return view('Admin.User.index', [
+            'users' => User::get()
+        ]);
     }
 
     /**
