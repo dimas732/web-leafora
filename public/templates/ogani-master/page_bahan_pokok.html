@@ -45,7 +45,7 @@
     <!-- Produk Sayur -->
     <section class="product-section container">
       <h2 class="section-title mb-4">Produk Pokok</h2>
-      <div class="row">
+      <div id="product_list" class="row">
 
         <!-- 1 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -205,6 +205,32 @@
 
     alert(`${name} telah ditambahkan ke keranjang!`);
     }
+    </script>
+
+    <script>
+      // js/catalog.js
+const products = [
+  { id: 1, name: "Beras", price: 76000, image: "img/beras.jpeg" },
+  { id: 2, name: "Tomat Segar", price: 7000, image: "img/tomat.jpg" },
+  { id: 3, name: "Kangkung", price: 6000, image: "img/kangkung.jpg" }
+];
+
+const list = document.getElementById("product-list");
+
+products.forEach(product => {
+  const item = document.createElement("div");
+  item.classList.add("product");
+
+  item.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>Rp ${product.price}</p>
+    <a href="detail.html?id=${product.id}" class="btn-detail">Lihat Detail</a>
+  `;
+  
+  list.appendChild(item);
+});
+
     </script>
 
 </body>
