@@ -159,7 +159,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/bgbuahh.jpg">
+    <!-- <section class="breadcrumb-section set-bg" data-setbg="img/bgbuahh.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -174,7 +174,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Breadcrumb Section End -->
 
     <!-- Product Details Section Begin -->
@@ -184,10 +184,10 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="img/product/details/parselbuah.jpg" alt="">
+                            <img class="product__details__pic__item--large" id="productImage"
+                                src="" alt="">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
+                        <!-- <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/featured/pisang1.jpg"
                                 src="img/product/details/anggur.jpg" alt="">
                             <img data-imgbigurl="img/product/featured/alpukat.jpg"
@@ -196,22 +196,16 @@
                                 src="img/product/details/stawberry.jpg" alt="">
                             <img data-imgbigurl="img/product/details/pir.jpg"
                                 src="img/product/details/jeruk.jpg" alt="">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>Paket Buah Segar</h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(14 reviews)</span>
+                        <h3 id="productName"></h3>
+                        <div class="product__details__rating" id="productRating">
                         </div>
-                        <div class="product__details__price">Rp85.500</div>
-                        <p>Paket ini berisi aneka buah pilihan yang segar dan siap santap. Ada apel merah yang renyah, pisang manis, jeruk segar, hingga anggur yang cocok untuk camilan sehat. Buah-buahnya dipilih langsung dari petani sehingga lebih terjamin kesegarannya. Cocok untuk kebutuhan harian keluarga atau sebagai sajian buah potong di rumah.</p>
+                        <div class="product__details__price" id="productPrice"></div>
+                        <p id="productDesc"></p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -219,12 +213,12 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">TAMBAH KERANJANG</a>
+                        <a href="#" onclick="addToCart('productName', 'productPrice', 'productImage')" class="primary-btn">TAMBAH KERANJANG</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>Availability</b> <span id="productAvail"></span></li>
+                            <li><b>Shipping</b> <span id="productShip"></samp></span></li>
+                            <li><b>Weight</b> <span id="productWeight"></span></li>
                             <li><b>Share on</b>
                                 <div class="share">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
@@ -254,9 +248,9 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">
+                                <div class="product__details__tab__desc" id="productDesc">
                                     <h6>Products Infomation</h6>
-                                    <p>Paket Buah Segar berisi kombinasi buah pilihan seperti apel, jeruk, pisang, dan anggur. Semua buah dipetik dalam kondisi segar sehingga rasanya tetap manis alami dan tahan lebih lama. Cocok untuk stok harian di rumah atau dijadikan hampers sehat.</p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -441,6 +435,55 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Ambil data produk dari localStorage
+        const product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+        if (product) {
+            document.getElementById("productName").textContent = product.name;
+            document.getElementById("productPrice").textContent = product.price;
+            document.getElementById("productDesc").textContent = product.desc;
+            document.getElementById("productAvail").textContent = product.availability;
+            document.getElementById("productShip").textContent = product.shipping;
+            document.getElementById("productWeight").textContent = product.weight;
+            document.getElementById("productImage").src = product.image; // tampilkan gambar
+            document.getElementById("productImage").alt = product.name;
+
+            // Tampilkan bintang rating
+            const ratingContainer = document.getElementById("productRating");
+            const fullStars = Math.floor(product.rating);
+            const halfStar = product.rating % 1 !== 0;
+
+            for (let i = 0; i < fullStars; i++) {
+                ratingContainer.innerHTML += '<i class="fa fa-star"></i>';
+            }
+            if (halfStar) {
+                ratingContainer.innerHTML += '<i class="fa fa-star-half-o"></i>';
+            }
+            ratingContainer.innerHTML += `<span> (${product.reviews} reviews)</span>`;
+        } else {
+            document.body.innerHTML = "<h2>Produk tidak ditemukan!</h2>";
+        }
+
+        function addToCart(name, price, image) {
+                // Ambil keranjang dari localStorage (kalau belum ada, buat array kosong)
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Cek apakah produk sudah ada di keranjang
+                const existing = cart.find(item => item.name === name);
+
+                if (existing) {
+                    existing.quantity += 1; // kalau sudah ada, tambah jumlahnya
+                } else {
+                    cart.push({ name, price, image, quantity: 1 }); // kalau belum ada, masukkan produk baru
+                }
+
+                // Simpan kembali ke localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert(`${name} telah ditambahkan ke keranjang!`);
+            }
+    </script>
 
 
 </body>
