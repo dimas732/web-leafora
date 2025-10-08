@@ -50,7 +50,7 @@
         <!-- 1 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(1)">
               <img src="img/beras.jpeg" alt="Beras" />
               <div class="product-action">
                 <button onclick="addToCart('Beras', 76000, 'img/beras.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -66,7 +66,7 @@
         <!-- 2 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(2)">
               <img src="img/minyak_goreng.jpeg" alt="Minyak Goreng" />
               <div class="product-action">
                 <button onclick="addToCart('Minyak Goreng 2 Liter', 9000, 'img/minyak_goreng.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -82,10 +82,10 @@
         <!-- 3 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(3)">
               <img src="img/telur.jpeg" alt="Telur" />
               <div class="product-action">
-                <button onclick="addToCart('Telur Ayam', 8000, 'img/telur.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Telur Ayam', 13000, 'img/telur.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -98,10 +98,10 @@
         <!-- 4 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(4)">
               <img src="img/Kecap.jpeg" alt="Kecap" />
               <div class="product-action">
-                <button onclick="addToCart('Kecap', 8000, 'img/Kecap.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button onclick="addToCart('Kecap', 14000, 'img/Kecap.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
             <div class="product-info">
@@ -114,7 +114,7 @@
         <!-- 5 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(5)">
               <img src="img/indomie.jpeg" alt="indomie Goreng" />
               <div class="product-action">
                 <button onclick="addToCart('indomie Goreng', 2500, 'img/indomie.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -130,7 +130,7 @@
         <!-- 6 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(6)">
               <img src="img/tepung_terigu.jpeg" alt="Tepung Terigu" />
               <div class="product-action">
                 <button onclick="addToCart('Tepung Terigu 1 Kg', 12000, 'img/tepung_terigu.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -146,7 +146,7 @@
         <!-- 7 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(7)">
               <img src="img/saos_sambel.jpeg" alt="Saos Sambel" />
               <div class="product-action">
                 <button onclick="addToCart('Saos Sambel', 24000, 'img/saos_sambel.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -162,7 +162,7 @@
         <!-- 8 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(8)">
               <img src="img/tepung_tapioka.jpeg" alt="Tepung Tapioka 1kg" />
               <div class="product-action">
                 <button onclick="addToCart('Tepung Tapioka 1kg', 11000, 'img/tepung_tapioka.jpeg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -186,7 +186,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
+    <!-- <script>
     function addToCart(name, price, image) {
     // Ambil keranjang dari localStorage (kalau belum ada, buat array kosong)
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -205,7 +205,138 @@
 
     alert(`${name} telah ditambahkan ke keranjang!`);
     }
+    </script> -->
+
+    <script>
+        // Data produk
+        const products = [
+            {
+                id: 1,
+                name: "Beras",
+                price: "Rp76.500",
+                image: "img/beras.jpeg",
+                rating: 4.5,
+                reviews: 14,
+                desc: "Beras dengan berat 5 liter merk Setra Ramos",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "5 kg"
+            },
+            {
+                id: 2,
+                name: "Minyak Goreng 2 Liter",
+                price: "Rp 44.000",
+                image: "img/minyak_goreng.jpeg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 3,
+                name: "Telur Ayam",
+                price: "Rp 13.000 / 500g",
+                image: "img/telur.jpeg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+            {
+                id: 4,
+                name: "Kecap",
+                price: "Rp 14.000",
+                image: "img/Kecap.jpeg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "400ml"
+            },
+            {
+                id: 5,
+                name: "indomie Goreng",
+                price: "Rp 2.500",
+                image: "img/indomie.jpeg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "50g"
+            },
+            {
+                id: 6,
+                name: "Tepung Terigu 1 Kg",
+                price: "Rp 12.000",
+                image: "img/tepung_terigu.jpeg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 7,
+                name: "Saos Sambel",
+                price: "Rp 24.000",
+                image: "img/saos_sambel.jpeg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+            {
+                id: 8,
+                name: "Tepung Tapioka 1kg",
+                price: "Rp 11.000",
+                image: "img/tepung_tapioka.jpeg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+
+
+        ];
+
+        // Fungsi ketika produk diklik
+        function goToDetail(id) {
+            const selected = products.find(p => p.id === id);
+            localStorage.setItem("selectedProduct", JSON.stringify(selected));
+            window.location.href = "shop-details.html";
+        }
+
+        function addToCart(name, price, image) {
+                // Ambil keranjang dari localStorage (kalau belum ada, buat array kosong)
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Cek apakah produk sudah ada di keranjang
+                const existing = cart.find(item => item.name === name);
+
+                if (existing) {
+                    existing.quantity += 1; // kalau sudah ada, tambah jumlahnya
+                } else {
+                    cart.push({ name, price, image, quantity: 1 }); // kalau belum ada, masukkan produk baru
+                }
+
+                // Simpan kembali ke localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert(`${name} telah ditambahkan ke keranjang!`);
+            }
     </script>
+
 
 </body>
 </html>
