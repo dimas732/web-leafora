@@ -1,0 +1,89 @@
+// Catalog page
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Katalog Produk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Daftar Produk</h1>
+
+  <div id="product-list"></div>
+
+  <script src="js/catalog.js"></script>
+</body>
+</html>
+
+
+// js
+// js/catalog.js
+const products = [
+  { id: 1, name: "Sayur Bayam", price: 5000, image: "img/bayam.jpg" },
+  { id: 2, name: "Tomat Segar", price: 7000, image: "img/tomat.jpg" },
+  { id: 3, name: "Kangkung", price: 6000, image: "img/kangkung.jpg" }
+];
+
+const list = document.getElementById("product-list");
+
+products.forEach(product => {
+  const item = document.createElement("div");
+  item.classList.add("product");
+
+  item.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>Rp ${product.price}</p>
+    <a href="detail.html?id=${product.id}" class="btn-detail">Lihat Detail</a>
+  `;
+  
+  list.appendChild(item);
+});
+
+
+// detail html
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Produk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="product-detail"></div>
+
+  <script src="js/detail.js"></script>
+</body>
+</html>
+
+
+// js/detail.js
+const products = [
+  { id: 1, name: "Sayur Bayam", price: 5000, desc: "Bayam segar dari kebun lokal.", image: "img/bayam.jpg" },
+  { id: 2, name: "Tomat Segar", price: 7000, desc: "Tomat merah manis dan segar.", image: "img/tomat.jpg" },
+  { id: 3, name: "Kangkung", price: 6000, desc: "Kangkung hijau segar untuk tumisan.", image: "img/kangkung.jpg" }
+];
+
+// Ambil parameter ?id= dari URL
+const params = new URLSearchParams(window.location.search);
+const productId = parseInt(params.get("id"));
+
+// Cari produk yang sesuai
+const product = products.find(p => p.id === productId);
+
+// Tampilkan di halaman
+const container = document.getElementById("product-detail");
+
+if (product) {
+  container.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h2>${product.name}</h2>
+    <p>Harga: Rp ${product.price}</p>
+    <p>${product.desc}</p>
+    <a href="catalog.html">← Kembali ke katalog</a>
+  `;
+} else {
+  container.innerHTML = `<p>Produk tidak ditemukan.</p>`;
+}
