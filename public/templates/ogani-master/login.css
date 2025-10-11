@@ -100,3 +100,23 @@ body {
     display: block;
     margin: 0 auto;
 }
+/* ==== SIGN UP PAGE CUSTOM LAYOUT ==== */
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.input-group.half {
+    width: 50%;
+}
+
+@media (max-width: 500px) {
+    .input-row {
+        flex-direction: column;
+    }
+    .input-group.half {
+        width: 100%;
+    }
+}
