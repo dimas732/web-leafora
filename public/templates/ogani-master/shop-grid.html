@@ -246,7 +246,7 @@
                                 <h4>Latest Products</h4>
                                 <div class="latest-product__slider owl-carousel">
                                     <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
+                                        <a href="#" onclick="goToDetail(7)" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -602,12 +602,12 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
+                            <div class="product__item" onclick="goToDetail(7)">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/jagung.png">
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="" onclick="addToCart('Jagung Manis', 8500, 'img/product/jagung.png')"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
@@ -713,6 +713,134 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script>
+        function addToCart(name, price, image) {
+            // Ambil keranjang dari localStorage (kalau belum ada, buat array kosong)
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Cek apakah produk sudah ada di keranjang
+            const existing = cart.find(item => item.name === name);
+
+            if (existing) {
+                existing.quantity += 1; // kalau sudah ada, tambah jumlahnya
+            } else {
+                cart.push({ name, price, image, quantity: 1 }); // kalau belum ada, masukkan produk baru
+            }
+
+            // Simpan kembali ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${name} telah ditambahkan ke keranjang!`);
+        }
+        // Data produk
+        const products = [
+            {
+                id: 1,
+                name: "Brokoli",
+                price: "Rp 7.000 / ikat",
+                image: "img/featured/brokoli.jpg",
+                rating: 4.5,
+                reviews: 14,
+                desc: "Anggur hijau segar",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "100g"
+            },
+            {
+                id: 2,
+                name: "Wortel",
+                price: "Rp 3.000 / biji",
+                image: "img/featured/wortel.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 3,
+                name: "Bayam Hijau",
+                price: "Rp 2.000 / ikat",
+                image: "img/latest-product/bayam.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+            {
+                id: 4,
+                name: "Tomat",
+                price: "Rp 8.000 / kg",
+                image: "img/latest-product/Tomato.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "400ml"
+            },
+            {
+                id: 5,
+                name: "Cabai Rawit",
+                price: "Rp 23.000 / 250 gram",
+                image: "img/latest-product/Cabe-Rawit.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "50g"
+            },
+            {
+                id: 6,
+                name: "Kangkung segar",
+                price: "Rp 3.000 / ikat",
+                image: "img/latest-product/kangkung.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 7,
+                name: "Jagung Manis",
+                price: "Rp 17.000 / kg",
+                image: "img/product/okra1.png",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+            {
+                id: 8,
+                name: "Jagung Manis",
+                price: "Rp 8.500 / pack",
+                image: "img/product/jagung.png",
+                rating: 5,
+                reviews: 10,
+                desc: "Paket sayur segar langsung dari kebun...",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+
+
+        ];
+
+        // Fungsi ketika produk diklik
+        function goToDetail(id) {
+            const selected = products.find(p => p.id === id);
+            localStorage.setItem("selectedProduct", JSON.stringify(selected));
+            window.location.href = "shop-details.html";
+        }
+    </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
