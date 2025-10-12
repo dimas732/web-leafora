@@ -18,15 +18,15 @@
             </div>
             <h2>Create Your Account</h2>
 
-            <form action="#" method="POST" class="login-form">
+            <form id="registerForm" onsubmit="registerUser(event)" class="login-form">
                 <div class="input-row">
                     <div class="input-group half">
                         <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" name="fullname" placeholder="Your full name" required />
+                        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required />
                     </div>
                     <div class="input-group half">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Choose a username" required />
+                        <label for="userName">Username</label>
+                        <input type="text" id="userName" name="userName" placeholder="Choose a username" required />
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
 
                 <div class="input-group">
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" required />
+                    <input type="password" id="confirmPassword" name="confirm-password" placeholder="Re-enter your password" required />
                 </div>
 
                 <button type="submit" class="btn-login">Sign Up</button>
@@ -83,6 +83,41 @@
             console.log("Google User:", data);
             alert(`Welcome, ${data.name}!`);
             // window.location.href = "index.html";
+        }
+    </script>
+    <script>
+        function registerUser(e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById("fullName").value;
+            const userName = document.getElementById("userName").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("Password dan konfirmasi tidak sama!");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Cek email sudah ada atau belum
+            if (users.some(user => user.email === email)) {
+                alert("Email sudah terdaftar!");
+                return;
+            }
+
+            users.push({
+                fullName: fullName,
+                userName: userName,
+                email: email,
+                password: password
+             });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Registrasi berhasil! Silakan login.");
+            window.location.href = "login.html";
         }
     </script>
 </body>

@@ -94,7 +94,7 @@
                 <div class="row">
                     <div class="header__top__right__auth">
                         <a href="login.html"><i class="fa fa-user"></i> Login</a>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
@@ -671,6 +671,36 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const authSection = document.querySelector(".header__top__right__auth");
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            const userData = JSON.parse(localStorage.getItem("loggedInUser"));
+
+            if (isLoggedIn === "true" && userData) {
+                authSection.innerHTML = `
+                <a href="#" id="logoutLink">
+                    <i class="fa fa-user"></i> Logout (${userData.userName})
+                </a>
+            `;
+
+                document.getElementById("logoutLink").addEventListener("click", function (e) {
+                    e.preventDefault();
+                    localStorage.removeItem("isLoggedIn");
+                    localStorage.removeItem("loggedInUser");
+                    alert("Berhasil logout!");
+                    window.location.reload();
+                });
+            } else {
+                authSection.innerHTML = `
+                <a href="login.html">
+                    <i class="fa fa-user"></i> Login
+                </a>
+            `;
+            }
+        });
+    </script>
+
 
 
 
