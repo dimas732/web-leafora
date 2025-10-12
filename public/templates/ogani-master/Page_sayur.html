@@ -16,7 +16,7 @@
             <img src="img/leafora.png" alt="LEAFORA">
             <span>LEAFORA</span>
         </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,7 +50,7 @@
         <!-- 1 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(1)">
               <img src="img/featured/brokoli.jpg" alt="Brokoli" />
               <div class="product-action">
                 <button onclick="addToCart('Brokoli', 7000, 'img/featured/brokoli.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -66,7 +66,7 @@
         <!-- 2 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(2)">
               <img src="img/featured/wortel.jpg" alt="Wortel" />
               <div class="product-action">
                 <button onclick="addToCart('Wortel', 3000, 'img/featured/wortel.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -82,7 +82,7 @@
         <!-- 3 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(3)">
               <img src="img/latest-product/bayam.jpg" alt="Bayam" />
               <div class="product-action">
                 <button onclick="addToCart('Bayam Hijau', 2000, 'img/latest-product/bayam.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -98,7 +98,7 @@
         <!-- 4 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(4)">
               <img src="img/latest-product/Tomato.jpg" alt="Tomat" />
               <div class="product-action">
                 <button onclick="addToCart('Tomat', 8000, 'img/latest-product/Tomato.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -114,7 +114,7 @@
         <!-- 5 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(5)">
               <img src="img/latest-product/Cabe-Rawit.jpg" alt="Cabai Rawit" />
               <div class="product-action">
                 <button onclick="addToCart('Cabai Rawit', 23000, 'img/latest-product/Cabe-Rawit.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -130,7 +130,7 @@
         <!-- 6 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(6)">
               <img src="img/latest-product/kangkung.jpg" alt="Kangkung" />
               <div class="product-action">
                 <button onclick="addToCart('Kangkung Segar', 3000, 'img/latest-product/kangkung.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -146,7 +146,7 @@
         <!-- 7 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(7)">
               <img src="img/product/okra1.png" alt="Okra" />
               <div class="product-action">
                 <button onclick="addToCart('Sayur Okra', 17000, 'img/product/okra1.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -162,7 +162,7 @@
         <!-- 8 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(8)">
               <img src="img/product/jagung.png" alt="Jagung Manis" />
               <div class="product-action">
                 <button onclick="addToCart('Jagung Manis', 8500, 'img/product/jagung.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -187,22 +187,130 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
-    function addToCart(name, price, image) {
-    
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        function addToCart(name, price, image) {
 
-    const existing = cart.find(item => item.name === name);
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    if (existing) {
-        existing.quantity += 1; 
-    } else {
-        cart.push({ name, price, image, quantity: 1 }); 
-    }
+        const existing = cart.find(item => item.name === name);
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cart.push({ name, price, image, quantity: 1 });
+        }
 
-    alert(`${name} telah ditambahkan ke keranjang!`);
-    }
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${name} telah ditambahkan ke keranjang!`);
+        }
+
+        const products = [
+                {
+                    id: 1,
+                    name: "Brokoli",
+                    price: "Rp 7.000 / ikat",
+                    image: "img/featured/brokoli.jpg",
+                    rating: 5,
+                    reviews: 14,
+                    desc: "Brokoli segar berkualitas premium dengan warna hijau cerah dan tekstur renyah. Kaya akan nutrisi dan rendah kalori, cocok untuk menjaga pola makan sehat. Dipetik langsung dari kebun dataran tinggi dan dikemas dengan higienis untuk menjaga kesegaran serta kandungan gizinya. Ideal untuk berbagai olahan seperti tumisan, sup, maupun kukusan.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "5 kg"
+                },
+                {
+                    id: 2,
+                    name: "Wortel",
+                    price: "Rp 3.000 / biji",
+                    image: "img/featured/wortel.jpg",
+                    rating: 5,
+                    reviews: 10,
+                    desc: "Wortel segar pilihan dengan warna oranye cerah dan tekstur renyah. Mengandung vitamin A tinggi yang baik untuk kesehatan mata dan daya tahan tubuh. Dipanen dari kebun dataran tinggi dengan proses sortasi ketat untuk menjamin kualitas terbaik. Cocok digunakan untuk berbagai olahan seperti sup, tumisan, jus, atau camilan sehat.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "1 kg"
+                },
+                {
+                    id: 3,
+                    name: "Bayam Hijau",
+                    price: "Rp 2.000 / ikat",
+                    image: "img/latest-product/bayam.jpg",
+                    rating: 5,
+                    reviews: 10,
+                    desc: "Bayam segar dengan daun hijau lembut dan tangkai muda yang empuk. Dikenal sebagai sumber zat besi dan serat tinggi, bayam sangat baik untuk menjaga kesehatan tubuh dan melancarkan metabolisme. Dipetik setiap pagi dari kebun lokal dan dikemas dengan higienis agar kesegarannya tetap terjaga. Cocok untuk berbagai olahan seperti sayur bening, tumisan, atau jus hijau.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "500g"
+                },
+                {
+                    id: 4,
+                    name: "Tomat",
+                    price: "Rp 8.000 / kg",
+                    image: "img/latest-product/Tomato.jpg",
+                    rating: 5,
+                    reviews: 10,
+                    desc: "Tomat segar pilihan dengan warna merah cerah dan tekstur lembut berair. Memiliki rasa manis-asam alami yang menyegarkan, cocok untuk berbagai olahan masakan maupun jus. Dipetik saat matang sempurna dari kebun terbaik dan dikemas dengan higienis agar kesegarannya tetap terjaga sampai di tangan Anda.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "400ml"
+                },
+                {
+                    id: 5,
+                    name: "Cabai Rawit",
+                    price: "Rp 23.000 / 250g",
+                    image: "img/latest-product/Cabe-Rawit.jpg",
+                    rating: 5,
+                    reviews: 10,
+                    desc: "Cabai Rawit segar dengan tingkat kepedasan tinggi dan aroma khas yang menggugah selera. Dipetik langsung dari kebun petani lokal dalam kondisi matang sempurna agar menghasilkan rasa pedas alami yang maksimal. Cocok digunakan untuk sambal, tumisan, atau bumbu dapur sehari-hari.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "50g"
+                },
+                {
+                    id: 6,
+                    name: "Kangkung segar",
+                    price: "Rp 3.000 / ikat",
+                    image: "img/latest-product/kangkung.jpg",
+                    rating: 5,
+                    reviews: 10,
+                    desc: "Kangkung segar pilihan dengan daun hijau muda dan batang yang renyah. Dipanen pagi hari dari kebun lokal untuk memastikan tekstur tetap segar dan rasa alami terjaga. Praktis diolah untuk aneka masakan tradisional seperti tumis cah kangkung, tumisan pedas, maupun sup. Dikemas secara higienis untuk menjaga kebersihan dan kesegaran sampai ke konsumen.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "1 kg"
+                },
+                {
+                    id: 7,
+                    name: "Sayur Okra",
+                    price: "Rp 17.000 / kg",
+                    image: "img/product/okra1.png",
+                    rating: 5,
+                    reviews: 10,
+                    desc: "Okra segar dengan buah berukuran sedang, hijau mengkilap, dan tekstur lembut ketika dimasak. Memiliki rasa ringan dan kaya serat, okra cocok untuk olahan tumis, sup, atau masakan berkuah. Dipanen matang sesuai musim untuk menghasilkan kualitas terbaik dan dikemas rapi agar tetap higienis.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "500g"
+                },
+                {
+                    id: 8,
+                    name: "Jagung Manis",
+                    price: "Rp 8.500 / pack",
+                    image: "img/product/jagung.png",
+                    rating: 5,
+                    reviews: 10,
+                    desc: "Jagung manis segar dengan biji berwarna kuning cerah, penuh gula alami, dan tekstur renyah. Dipanen pada tingkat kematangan ideal untuk mendapatkan rasa manis maksimal. Cocok dinikmati langsung direbus, dibakar, atau dijadikan bahan olahan seperti salad, sup, dan tumisan. Dikemas dengan standar kebersihan tinggi agar tetap segar.",
+                    availability: "In Stock",
+                    shipping: "01 day shipping. Free pickup today",
+                    weight: "500g"
+                },
+
+
+            ];
+
+            // Fungsi ketika produk diklik
+            function goToDetail(id) {
+                const selected = products.find(p => p.id === id);
+                localStorage.setItem("selectedProduct", JSON.stringify(selected));
+                window.location.href = "shop-details.html";
+            }
     </script>
 
 </body>

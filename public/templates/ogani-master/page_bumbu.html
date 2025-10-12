@@ -16,18 +16,18 @@
             <img src="img/leafora.png" alt="LEAFORA">
             <span>LEAFORA</span>
         </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="Page_sayur.html">Sayur</a></li>
-          <li class="nav-item"><a class="nav-link" href="Page_Lauk.html">Lauk</a></li>
-          <li class="nav-item"><a class="nav-link" href="Page_Buah.html">Buah</a></li>
-          <li class="nav-item"><a class="nav-link" href="page_bumbu.html">Bumbu</a></li>
-          <li class="nav-item"><a class="nav-link" href="bahanpokok.html">Bahan Pokok</a></li>
-          <li class="nav-item"><a class="nav-link" href="produklain.html">Produk Lainnya</a></li>
+            <li class="nav-item"><a class="nav-link" href="Page_sayur.html">Sayur</a></li>
+            <li class="nav-item"><a class="nav-link" href="Page_Lauk.html">Lauk</a></li>
+            <li class="nav-item"><a class="nav-link" href="Page_buah.html">Buah</a></li>
+            <li class="nav-item"><a class="nav-link" href="page_bumbu.html">Bumbu</a></li>
+            <li class="nav-item"><a class="nav-link" href="page_bahan_pokok.html">Bahan Pokok</a></li>
+            <li class="nav-item"><a class="nav-link" href="page_fresh_produk.html">Produk Lainnya</a></li>
         </ul>
       </div>
     </nav>
@@ -50,7 +50,7 @@
         <!-- 1 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(1)">
               <img src="img/Bumbu/baput.jpg" alt="Bawang Putih" />
               <div class="product-action">
                 <button onclick="addToCart('Bawang Putih', 35000, 'img/Bumbu/baput.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -66,7 +66,7 @@
         <!-- 2 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(2)">
               <img src="img/Bumbu/bawang bombay.jpg" alt="Bawang Bombay" />
               <div class="product-action">
                 <button onclick="addToCart('Bawang Bombay', 40000, 'img/Bumbu/bawang bombay.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -82,7 +82,7 @@
         <!-- 3 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(3)">
               <img src="img/Bumbu/bawang_merah.jpg" alt="Bawang merah" />
               <div class="product-action">
                 <button onclick="addToCart('Bawang Merah', 48000, 'img/Bumbu/bawang_merah.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -98,7 +98,7 @@
         <!-- 4 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(4)">
               <img src="img/Bumbu/bunga_lawang.jpg" alt="Lawang" />
               <div class="product-action">
                 <button onclick="addToCart('Bunga Lawang', 90000, 'img/Bumbu/bunga_lawang.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -114,7 +114,7 @@
         <!-- 5 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(5)">
               <img src="img/Bumbu/jahe.jpg" alt="Jahe" />
               <div class="product-action">
                 <button onclick="addToCart('Jahe', 23000, 'img/Bumbu/jahe.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -130,7 +130,7 @@
         <!-- 6 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(6)">
               <img src="img/Bumbu/kayu_manis.jpg" alt="Kangkung" />
               <div class="product-action">
                 <button onclick="addToCart('Kayu Manis', 15000, 'img/Bumbu/kayu_manis.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -148,7 +148,7 @@
           <div class="product-card">
             <div class="product-img">
               <img src="img/Bumbu/kemiri.jpg" alt="Kemiri" />
-              <div class="product-action">
+              <div class="product-action" onclick="goToDetail(7)">
                 <button onclick="addToCart('Kemiri Kupas', 80000, 'img/product/okra1.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
               </div>
             </div>
@@ -162,7 +162,7 @@
         <!-- 8 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(8)">
               <img src="img/Bumbu/kunyit.jpg" alt="Kunyit" />
               <div class="product-action">
                 <button onclick="addToCart('Kunyit', 18000, 'img/Bumbu/kunyit.jpg`')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -196,13 +196,121 @@
     if (existing) {
         existing.quantity += 1;
     } else {
-        cart.push({ name, price, image, quantity: 1 }); 
+        cart.push({ name, price, image, quantity: 1 });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
     alert(`${name} telah ditambahkan ke keranjang!`);
     }
+
+    const products = [
+            {
+                id: 1,
+                name: "Bawang Putih",
+                price: "Rp 35.000 / kg",
+                image: "img/Bumbu/baput.jpg",
+                rating: 5,
+                reviews: 14,
+                desc: "Bawang putih segar berkualitas tinggi dengan ukuran besar dan aroma khas yang kuat. Dipilih dari umbi terbaik untuk menghasilkan rasa gurih dan sedap saat dimasak. Teksturnya padat dan mudah dikupas, sangat cocok untuk bumbu dasar berbagai masakan nusantara maupun internasional. Tanpa bahan pengawet, menjaga cita rasa dan khasiat alaminya.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "5 kg"
+            },
+            {
+                id: 2,
+                name: "Bawang Bombay",
+                price: "Rp 40.000 / kg",
+                image: "img/Bumbu/bawang bombay.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Bawang bombay segar dengan ukuran besar, warna kuning keemasan, dan tekstur renyah. Rasanya manis ringan dan aromanya lembut, menjadikannya bahan ideal untuk berbagai masakan seperti tumisan, steak, dan sup. Dipilih dari hasil panen terbaik untuk memastikan kualitas premium setiap kilogramnya.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 3,
+                name: "Bawang Merah",
+                price: "Rp 48.000 / kg",
+                image: "img/Bumbu/bawang_merah.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Bawang merah segar dengan ukuran seragam dan kulit berwarna merah keunguan cerah. Rasanya gurih-manis dan aromanya harum kuat saat digoreng. Sangat cocok untuk sambal, bumbu dasar, dan masakan tradisional Indonesia. Dikemas higienis agar tetap segar hingga sampai ke dapur Anda.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+            {
+                id: 4,
+                name: "Bunga Lawang",
+                price: "Rp 90.000 / kg",
+                image: "img/Bumbu/bunga_lawang.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Bunga lawang kering premium dengan aroma manis dan hangat yang khas. Cocok sebagai bumbu penyedap alami untuk masakan oriental, kari, rendang, atau olahan daging. Selain sebagai rempah, bunga lawang juga bermanfaat untuk kesehatan pencernaan dan pernapasan. Dikemas rapi agar tetap kering dan harum.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "400ml"
+            },
+            {
+                id: 5,
+                name: "Jahe",
+                price: "Rp 10.000 / 500 gram",
+                image: "img/Bumbu/jahe.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Jahe merah segar ini merupakan hasil panen petani lokal yang dipilih langsung untuk menjaga kualitas dan kesegarannya. Dengan aroma khas yang kuat dan rasa pedas yang menyegarkan, jahe merah dikenal memiliki banyak manfaat untuk kesehatan, terutama dalam meningkatkan daya tahan tubuh dan menjaga kehangatan badan. Setiap rimpang jahe dipanen dari tanaman yang tumbuh alami tanpa bahan kimia berlebihan, sehingga aman dikonsumsi setiap hari baik sebagai bahan masakan maupun minuman herbal.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "50g"
+            },
+            {
+                id: 6,
+                name: "Kayu Manis",
+                price: "Rp 15.000 / kg",
+                image: "img/Bumbu/kayu_manis.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Kayu manis kering berkualitas tinggi dengan aroma manis dan hangat yang menggugah selera. Dapat digunakan untuk menambah rasa pada masakan manis maupun gurih seperti semur, kolak, dan kue.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 7,
+                name: "Kemiri Kupas",
+                price: "Rp 80.000 / kg",
+                image: "img/Bumbu/kemiri.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Kemiri kupas siap pakai dengan tekstur padat dan rasa gurih khas. Sangat cocok untuk membuat bumbu dasar putih, opor, sambal goreng, atau rendang. Diproses higienis tanpa bahan tambahan.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "250g"
+            },
+            {
+                id: 8,
+                name: "Kunyit",
+                price: "Rp 18.000 / pack",
+                image: "img/Bumbu/kunyit.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Kunyit segar dengan warna oranye cerah dan aroma khas rempah. Memiliki rasa sedikit pahit dan hangat, cocok untuk bumbu masakan serta minuman herbal. Mengandung kurkumin tinggi yang baik untuk kesehatan.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+
+
+        ];
+
+        // Fungsi ketika produk diklik
+        function goToDetail(id) {
+            const selected = products.find(p => p.id === id);
+            localStorage.setItem("selectedProduct", JSON.stringify(selected));
+            window.location.href = "shop-details.html";
+        }
     </script>
 
 </body>

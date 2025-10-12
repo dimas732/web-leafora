@@ -337,31 +337,31 @@
             }
     </script>
 
-    <script>
+    <!-- <script>
       // js/catalog.js
-const products = [
-  { id: 1, name: "Beras", price: 76000, image: "img/beras.jpeg" },
-  { id: 2, name: "Tomat Segar", price: 7000, image: "img/tomat.jpg" },
-  { id: 3, name: "Kangkung", price: 6000, image: "img/kangkung.jpg" }
-];
+        const products = [
+        { id: 1, name: "Beras", price: 76000, image: "img/beras.jpeg" },
+        { id: 2, name: "Tomat Segar", price: 7000, image: "img/tomat.jpg" },
+        { id: 3, name: "Kangkung", price: 6000, image: "img/kangkung.jpg" }
+        ];
 
-const list = document.getElementById("product-list");
+        const list = document.getElementById("product-list");
 
-products.forEach(product => {
-  const item = document.createElement("div");
-  item.classList.add("product");
+        products.forEach(product => {
+        const item = document.createElement("div");
+        item.classList.add("product");
 
-  item.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p>Rp ${product.price}</p>
-    <a href="detail.html?id=${product.id}" class="btn-detail">Lihat Detail</a>
-  `;
-  
-  list.appendChild(item);
-});
+        item.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>Rp ${product.price}</p>
+            <a href="detail.html?id=${product.id}" class="btn-detail">Lihat Detail</a>
+        `;
 
-    </script>
+        list.appendChild(item);
+        });
+
+    </script> -->
 
 </body>
 </html>

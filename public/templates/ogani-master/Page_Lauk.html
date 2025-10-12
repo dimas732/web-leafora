@@ -16,7 +16,7 @@
             <img src="img/leafora.png" alt="LEAFORA">
             <span>LEAFORA</span>
         </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,7 +50,7 @@
         <!-- 1 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(1)">
               <img src="img/featured/ayam.jpg" alt="Ayam Utuh" />
               <div class="product-action">
                 <button onclick="addToCart('Ayam Utuh', 30000, 'img/featured/ayam.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -66,7 +66,7 @@
         <!-- 2 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(2)">
               <img src="img/featured/daging1.png" alt="Daging sapi" />
               <div class="product-action">
                 <button onclick="addToCart('Daging sapi 1 kg', 120000, 'img/featured/daging1.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -82,7 +82,7 @@
         <!-- 3 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(3)">
               <img src="img/product/dagingcincang.png" alt="Daging cincang" />
               <div class="product-action">
                 <button onclick="addToCart('Daging cincang', 65000, 'img/product/dagingcincang.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -98,7 +98,7 @@
         <!-- 4 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(4)">
               <img src="img/product/discount/dagingslice.jpg" alt="Daging sapi slice" />
               <div class="product-action">
                 <button onclick="addToCart('Daging slice', 595000, 'img/product/discount/dagingslice.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -114,7 +114,7 @@
         <!-- 5 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(5)">
               <img src="img/product/tongkol.jpg" alt="Tongkol" />
               <div class="product-action">
                 <button onclick="addToCart('Ikan Tongkal', 30000, 'img/product/tongkol.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -130,7 +130,7 @@
         <!-- 6 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(6)">
               <img src="img/product/tempe.jpg" alt="Tempe" />
               <div class="product-action">
                 <button onclick="addToCart('Tempe', 5000, 'img/product/tempe.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -146,7 +146,7 @@
         <!-- 7 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(7)">
               <img src="img/product/cumi.jpg" alt="Okra" />
               <div class="product-action">
                 <button onclick="addToCart('Cumi-Cumi 250 gr', 20000, 'img/product/cumi.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -162,7 +162,7 @@
         <!-- 8 -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="product-card">
-            <div class="product-img">
+            <div class="product-img" onclick="goToDetail(8)">
               <img src="img/latest-product/lele.png" alt="Lele 1 kg" />
               <div class="product-action">
                 <button onclick="addToCart('Lele 1 Kg', 26000, 'img/product/jagung.png')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
@@ -188,21 +188,129 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
     function addToCart(name, price, image) {
-    
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const existing = cart.find(item => item.name === name);
 
     if (existing) {
-        existing.quantity += 1; 
+        existing.quantity += 1;
     } else {
-        cart.push({ name, price, image, quantity: 1 }); 
+        cart.push({ name, price, image, quantity: 1 });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
     alert(`${name} telah ditambahkan ke keranjang!`);
     }
+
+    const products = [
+            {
+                id: 1,
+                name: "Ayam Utuh",
+                price: "Rp 30.000",
+                image: "img/featured/ayam.jpg",
+                rating: 5,
+                reviews: 14,
+                desc: "Ayam utuh segar dengan kualitas premium, diproses secara higienis tanpa bahan pengawet sehingga aman dikonsumsi setiap hari. Dagingnya lembut, juicy, dan gurih alami, cocok untuk berbagai olahan seperti ayam goreng, ayam bakar, sup, atau opor. Setiap potong ayam dipilih dari peternakan terpercaya untuk menjaga kesegaran dan rasa terbaik. Dengan satu ekor ayam utuh, kamu bisa mengkreasikan berbagai menu lezat untuk keluarga tercinta.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "5 kg"
+            },
+            {
+                id: 2,
+                name: "Daging Sapi 1 kg",
+                price: "Rp 120.000 / kg",
+                image: "img/featured/daging1.png",
+                rating: 5,
+                reviews: 10,
+                desc: "Daging sapi segar kualitas pilihan yang dipotong dari bagian terbaik sapi lokal. Teksturnya empuk dan seratnya halus, menghasilkan cita rasa gurih alami saat dimasak. Cocok untuk berbagai hidangan seperti rendang, sop, semur, atau steak rumahan. Diproses secara higienis oleh tenaga profesional tanpa bahan tambahan, sehingga terjamin kesegaran dan keamanannya. Dengan satu kilogram daging sapi ini, kamu bisa membuat berbagai olahan bergizi untuk keluarga tercinta setiap hari.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 3,
+                name: "Daging Cincang",
+                price: "Rp 2.000 / ikat",
+                image: "Rp 65.000 / pac",
+                rating: 5,
+                reviews: 10,
+                desc: "Daging sapi cincang segar yang dibuat dari potongan daging pilihan tanpa lemak berlebih. Teksturnya lembut dan mudah diolah, cocok untuk berbagai menu seperti bakso, tumisan, spaghetti bolognese, atau isian pastel. Diproses secara higienis dengan mesin penggiling bersertifikat food-grade agar tetap terjaga kesegarannya. Setiap kemasan dikontrol kualitasnya untuk memastikan daging tetap merah segar dan tidak berbau. Pilihan tepat untuk kamu yang ingin masak praktis tapi tetap bergizi tinggi.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+            {
+                id: 4,
+                name: "Daging Sapi slice",
+                price: "Rp 59.500 / pack",
+                image: "img/product/discount/dagingslice.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Daging sapi slice premium yang diiris tipis dari bagian daging terbaik sapi lokal. Setiap lembarannya memiliki tekstur lembut dan serat halus sehingga mudah matang saat dimasak. Cocok untuk berbagai menu modern seperti yakiniku, shabu-shabu, suki, hingga tumisan ala rumahan. Diproses dengan teknologi pendinginan cepat agar kesegaran dan warna alami daging tetap terjaga. Praktis, higienis, dan lezat — pilihan sempurna untuk kamu yang ingin menikmati cita rasa restoran di rumah.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "400ml"
+            },
+            {
+                id: 5,
+                name: "Ikan Tongkol",
+                price: "Rp 30.000 / kg",
+                image: "img/product/tongkol.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Ikan Tongkol segar pilihan yang berasal dari hasil tangkapan laut terbaik. Dikenal dengan dagingnya yang padat, gurih, dan kaya protein, ikan ini menjadi bahan masakan favorit di banyak rumah tangga Indonesia. Diproses secara higienis tanpa bahan pengawet, memastikan kesegarannya tetap terjaga hingga sampai ke tangan pelanggan. Cocok untuk berbagai hidangan seperti tongkol balado, pindang, atau pepes tongkol. Dengan kualitas premium, ikan ini menghadirkan cita rasa laut yang autentik di setiap suapan.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "50g"
+            },
+            {
+                id: 6,
+                name: "Tempe",
+                price: "Rp 5.000 / bungkus",
+                image: "img/product/tempe.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Tempe segar berkualitas tinggi yang terbuat dari kedelai pilihan dan proses fermentasi alami. Teksturnya padat, rasanya gurih khas kedelai, dan aromanya segar  cocok untuk berbagai olahan seperti tempe goreng, orek, bacem, atau tumisan. Diproduksi oleh pengrajin lokal dengan proses higienis tanpa bahan pengawet, menjaga cita rasa tradisional Indonesia yang autentik. Kaya akan protein nabati, serat, serta vitamin B kompleks, menjadikan tempe pilihan ideal untuk lauk sehat keluarga setiap hari.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "1 kg"
+            },
+            {
+                id: 7,
+                name: "Cumi-Cumi 250 gr",
+                price: "Rp 20.000 / 250 gr",
+                image: "img/product/cumi.jpg",
+                rating: 5,
+                reviews: 10,
+                desc: "Cumi-cumi segar pilihan dengan tekstur kenyal lembut dan rasa gurih alami khas hasil laut. Diproses secara higienis sejak penangkapan hingga pengemasan untuk memastikan kesegaran dan kualitas terbaik tetap terjaga. Cumi ini cocok untuk berbagai masakan seperti cumi goreng tepung, tumis pedas, atau sambal cumi hitam. Kaya akan protein, vitamin, dan mineral penting yang baik untuk tubuh. Praktis untuk dimasak dan siap diolah kapan saja, menjadikan cumi-cumi segar ini pilihan sempurna untuk hidangan seafood di rumah.",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "250g"
+            },
+            {
+                id: 8,
+                name: "Ikan Lele 1 Kg",
+                price: "Rp 26.000 / kg",
+                image: "img/latest-product/lele.png",
+                rating: 5,
+                reviews: 10,
+                desc: "Ikan lele segar berkualitas tinggi, langsung dari kolam budidaya petani lokal yang terjaga kebersihannya. Dikenal dengan dagingnya yang lembut, gurih, dan kaya protein, ikan lele sangat populer sebagai lauk sehari-hari. Diproses secara higienis tanpa bahan pengawet sehingga aman untuk dikonsumsi oleh seluruh anggota keluarga. Cocok untuk berbagai olahan seperti lele goreng, lele bakar, mangut lele, hingga pepes. Dengan tekstur daging yang lembut dan cita rasa gurih alami, ikan lele segar ini menjadi pilihan sempurna untuk menu rumahan yang lezat dan bergizi..",
+                availability: "In Stock",
+                shipping: "01 day shipping. Free pickup today",
+                weight: "500g"
+            },
+
+
+        ];
+
+        // Fungsi ketika produk diklik
+        function goToDetail(id) {
+            const selected = products.find(p => p.id === id);
+            localStorage.setItem("selectedProduct", JSON.stringify(selected));
+            window.location.href = "shop-details.html";
+        }
     </script>
 
 </body>
