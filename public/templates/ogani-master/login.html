@@ -59,6 +59,8 @@
 
     <!-- Decode Token Script -->
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+    <!-- Login Script -->
     <script>
         function loginUser(e) {
             e.preventDefault();
@@ -75,21 +77,19 @@
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("loggedInUser", JSON.stringify(user));
 
-                alert("Login berhasil!");
-                window.location.href = "index.html"; // arahkan ke halaman utama
+                alert("Login berhasil! Kamu akan diarahkan ke halaman utama");
+                window.location.href = "index.html"; 
             } else {
                 alert("Username atau password salah!");
             }
         }
-    </script>
-    <script>
+
+        // Optional: Google Sign-In
         function handleCredentialResponse(response) {
             const data = jwt_decode(response.credential);
             console.log("User Info:", data);
             alert(`Welcome, ${data.name}!`);
         }
     </script>
-
-
 </body>
 </html>

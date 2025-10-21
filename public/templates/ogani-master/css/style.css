@@ -35,7 +35,6 @@ body {
 	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 }
 
 h1,
@@ -814,6 +813,7 @@ ol {
 	left: -35px;
 	top: 50%;
 	-webkit-transform: translateY(-35px);
+	transform: translateY(-35px);
 	background: #ffffff;
 }
 
@@ -3217,6 +3217,7 @@ ol {
 		left: 0;
 		top: 0;
 		-webkit-transform: translateY(0);
+  		transform: translateY(0);
 	}
 	.categories__slider.owl-carousel .owl-nav button.owl-next {
 		right: -10px;
@@ -3517,10 +3518,10 @@ ol {
 /* Tombol Login Cantik */
 .header__top__right__auth a {
     display: inline-block;
-    background-color: #7fad39;       /* warna hijau utama */
-    color: #fff;                     /* teks putih */
-    padding: 8px 18px;               /* ukuran tombol */
-    border-radius: 25px;             /* sudut membulat */
+    background-color: #7fad39;      
+    color: #fff;                     
+    padding: 8px 18px;               
+    border-radius: 25px;             
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
@@ -3529,12 +3530,21 @@ ol {
 }
 
 .header__top__right__auth a i {
-    margin-right: 6px; /* jarak ikon dan teks */
+    margin-right: 6px; 
 }
 
 .header__top__right__auth a:hover {
-    background-color: #6c9b32;      /* warna hijau lebih gelap pas hover */
-    transform: translateY(-2px);    /* efek sedikit naik */
+    background-color: #6c9b32;     
+    transform: translateY(-2px);    
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
+.header__top__right__auth a.logged-in {
+  background-color: #18401a;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
 

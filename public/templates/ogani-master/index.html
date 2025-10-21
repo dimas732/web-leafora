@@ -662,7 +662,7 @@
     </footer>
     <!-- Footer Section End -->
 
-    <!-- Js Plugins -->
+        <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
@@ -671,39 +671,41 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Script Login & Logout -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const authSection = document.querySelector(".header__top__right__auth");
             const isLoggedIn = localStorage.getItem("isLoggedIn");
             const userData = JSON.parse(localStorage.getItem("loggedInUser"));
 
+            // Jika user sudah login
             if (isLoggedIn === "true" && userData) {
                 authSection.innerHTML = `
-                <a href="#" id="logoutLink">
-                    <i class="fa fa-user"></i> Logout (${userData.userName})
-                </a>
-            `;
+                    <a href="#" id="logoutLink" class="logged-in">
+                        <i class="fa fa-user"></i> Logout (${userData.userName})
+                    </a>
+                `;
 
-                document.getElementById("logoutLink").addEventListener("click", function (e) {
+                // Tambahkan event logout
+                const logoutLink = document.getElementById("logoutLink");
+                logoutLink.addEventListener("click", function (e) {
                     e.preventDefault();
                     localStorage.removeItem("isLoggedIn");
                     localStorage.removeItem("loggedInUser");
                     alert("Berhasil logout!");
-                    window.location.reload();
+                    window.location.href = "login.html";
                 });
-            } else {
+            } 
+            // Jika belum login
+            else {
                 authSection.innerHTML = `
-                <a href="login.html">
-                    <i class="fa fa-user"></i> Login
-                </a>
-            `;
+                    <a href="login.html">
+                        <i class="fa fa-user"></i> Login
+                    </a>
+                `;
             }
         });
     </script>
-
-
-
-
 </body>
-
 </html>
