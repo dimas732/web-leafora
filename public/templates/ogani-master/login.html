@@ -90,27 +90,28 @@
             console.log("User Info:", data);
             alert(`Welcome, ${data.name}!`);
         }
-        function loginUser(e) {
-  e.preventDefault();
+    function loginUser(e) {
+        e.preventDefault();
 
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-  // Ambil data user dari localStorage
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-  const user = users.find(u => u.userName === username && u.password === password);
+        // Ambil data user dari localStorage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const user = users.find(u => u.userName === username && u.password === password);
 
-  if (user) {
-    // Simpan status login
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
+        if (user) {
+        // Simpan status login
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
 
-    alert("Login berhasil!");
-    window.location.href = "index.html"; // Kembali ke halaman utama
-  } else {
-    alert("Username atau password salah!");
-  }
-}   
+        alert("Login berhasil!");
+        window.location.href = "index.html";} 
+        
+        else {
+        alert("Username atau password salah!");
+        }
+    }   
 </script>
 </body>
 </html>
