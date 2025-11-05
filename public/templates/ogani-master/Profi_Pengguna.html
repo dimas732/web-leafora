@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile - LeaFora</title>
+  <link rel="stylesheet" href="profilpengguna.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="user-greeting">
+        <h2>Hi,</h2>
+        <p>Welcome <span class="username">Adam.</span></p>
+      </div>
+      <div class="profile-actions">
+        <div class="user-icon">
+          <i class="fa-solid fa-user"></i>
+          <span>Your Name</span>
+        </div>
+        <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/146/146035.png" alt="User Avatar">
+        <h3>Adam Suley</h3>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+      </div>
+
+      <form class="profile-form">
+        <label>Username :</label>
+        <input type="text" value="adam_suley" readonly>
+
+        <label>Email :</label>
+        <input type="email" value="adam@example.com" readonly>
+
+        <label>Phone :</label>
+        <input type="text" value="+62 812 3456 7890" readonly>
+
+        <label>Password :</label>
+        <div class="password-field">
+          <input type="password" value="12345678" readonly>
+          <i class="fa-regular fa-eye"></i>
+        </div>
+        </div>
+
+        <script>
+            // Ambil data user login dari localStorage
+            const userData = JSON.parse(localStorage.getItem("loggedInUser"));
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+            if (!isLoggedIn || !userData) {
+            alert("Kamu harus login terlebih dahulu!");
+            window.location.href = "login.html";
+            } else {
+            // Isi data otomatis di halaman profil
+            document.querySelector(".username").textContent = userData.userName;
+            document.querySelector(".profile-image h3").textContent = userData.fullName;
+            document.querySelector('.profile-form input[type="text"]').value = userData.userName;
+            document.querySelector('.profile-form input[type="email"]').value = userData.email;
+            document.querySelector('.profile-form input[type="password"]').value = userData.password;
+            document.querySelector(".user-icon span").textContent = userData.fullName;
+            }
+
+            // Tombol logout
+            document.querySelector(".logout-btn").addEventListener("click", () => {
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("loggedInUser");
+            alert("Kamu telah logout.");
+            window.location.href = "login.html";
+            });
+        </script>
+    </body>
+</html>
+

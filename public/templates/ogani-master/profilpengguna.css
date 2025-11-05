@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f4f8f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.profile-container {
+  background: #fff;
+  width: 800px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  border-top: 6px solid #7fad39;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.user-greeting h2 {
+  color: #7fad39;
+  font-size: 24px;
+}
+
+.user-greeting p {
+  color: #444;
+  font-size: 18px;
+}
+
+.username {
+  color: #7fad39;
+  font-weight: 600;
+}
+
+.profile-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+  font-weight: 500;
+}
+
+.user-icon i {
+  color: #7fad39;
+}
+
+.logout-btn {
+  background-color: #7fad39;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #6c9432;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #d4e6c5;
+}
+
+.profile-image h3 {
+  color: #333;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.stars {
+  color: #7fad39;
+  margin-top: 5px;
+}
+
+.profile-form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-form label {
+  color: #555;
+  font-weight: 500;
+}
+
+.profile-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #f4f8f3;
+  outline: none;
+  color: #555;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  cursor: pointer;
+}

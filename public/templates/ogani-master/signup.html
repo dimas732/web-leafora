@@ -119,6 +119,27 @@
             alert("Registrasi berhasil! Silakan login.");
             window.location.href = "login.html";
         }
+        const loginLink = document.querySelector('.header__top__right__auth a');
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+        if (isLoggedIn === "true") {
+            loginLink.textContent = "Logout";
+            loginLink.classList.add("logged-in"); 
+        }
+
+        loginLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (loginLink.classList.contains("logged-in")) {
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("loggedInUser");
+            loginLink.textContent = "Login";
+            loginLink.classList.remove("logged-in");
+            alert("Kamu sudah logout.");
+            window.location.href = "index.html";
+            } else {
+            window.location.href = "index.html"; 
+        }
+        });
     </script>
 </body>
 </html>
