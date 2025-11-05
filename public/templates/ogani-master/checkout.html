@@ -213,10 +213,10 @@
     <section class="checkout spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <!-- <div class="col-lg-12">
                     <h6><span class="icon_tag_alt"></span> Punya kupon? <a href="#">Click here</a> Masukan kupon anda
                     </h6>
-                </div>
+                </div> -->
             </div>
             <div class="checkout__form">
                 <h4>Detail Pembayaran</h4>
@@ -227,89 +227,41 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Nama Depan<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="namaDepan" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Nama Belakang<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="namaBelakang" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Provinsi<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Alamat<span>*</span></p>
-                                <input type="text" placeholder="Nama Jalan" class="checkout__input__add">
-                                <input type="text" placeholder="Keterangan tambahan", suite, unite ect (optinal)">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Kabupaten/Kota<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Negara<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Kode Pos<span>*</span></p>
-                                <input type="text">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Nomor HP<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="nomorHP" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <p>Waktu Ambil<span>*</span></p>
+                                        <input type="datetime-local" id="waktuAmbil" required><br><br>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Sudah Punya Akun??
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <p>Yuk, buat akun baru dengan isi data di bawah. Kalau kamu sudah pernah belanja di sini, tinggal login aja di bagian atas halaman.</p>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Kirim ke alamat lain?
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Catatan Pemesanan<span>*</span></p>
-                                <input type="text"
-                                    placeholder="Ada pesan buat pengiriman? Tulis di sini ya.">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>PEMESANAN</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
-                                <ul>
-                                    <li>Paket Buah Segar <span>Rp85.000,00</span></li>
-                                    <li>Beras Desa PS <span>Rp51.200,00</span></li>
-                                    <li>Cumi-cumi 250 gr (2) <span>Rp40.000,00</span></li>
-                                </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>Rp176.200,00</span></div>
-                                <div class="checkout__order__total">Total <span>Rp176.200,00</span></div>
-                                <div class="checkout__input__checkbox">
-                                </div>
+
+                                <!-- UL kosong agar JS bisa isi otomatis -->
+                                <ul class="checkout__order__list"></ul>
+
+                                <div class="checkout__order__subtotal">Subtotal <span>Rp0</span></div>
+                                <div class="checkout__order__total">Total <span>Rp0</span></div>
 
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
@@ -318,22 +270,27 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
+
                                 <div class="checkout__input__checkbox">
-                                    <label for="paypal">
+                                    <label for="bank">
                                         Transfer bank
-                                        <input type="checkbox" id="paypal">
+                                        <input type="checkbox" id="bank">
                                         <span class="checkmark"></span>
+                                    </label>
                                 </div>
-                                   <div class="checkout__input__checkbox">
-                                    </label>
+
+                                <div class="checkout__input__checkbox">
+                                    <label for="cash">
                                         Cash
-                                        <input type="checkbox" id="paypal">
+                                        <input type="checkbox" id="cash">
                                         <span class="checkmark"></span>
                                     </label>
-                                    </div>
+                                </div>
+
                                 <button type="submit" class="site-btn">PESAN</button>
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>
@@ -418,8 +375,96 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
- 
+            // Ambil elemen HTML yang dibutuhkan
+            const cartList = document.querySelector(".checkout__order ul");
+            const subtotalElement = document.querySelector(".checkout__order__subtotal span");
+            const totalElement = document.querySelector(".checkout__order__total span");
+            const form = document.querySelector(".checkout__form form");
+
+            // Ambil data keranjang dari localStorage
+            let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+            // === 🛒 Fungsi untuk menampilkan data keranjang ===
+            function displayCartItems() {
+                // Jika keranjang kosong
+                if (cartItems.length === 0) {
+                    cartList.innerHTML = "<li>Keranjang Anda kosong.</li>";
+                    subtotalElement.textContent = "Rp0";
+                    totalElement.textContent = "Rp0";
+                    return;
+                }
+
+                // Reset isi list
+                cartList.innerHTML = "";
+
+                let total = 0;
+                cartItems.forEach(item => {
+                    const itemTotal = item.price * item.qty;
+                    total += itemTotal;
+
+                    const li = document.createElement("li");
+                    li.innerHTML = `${item.name} (${item.qty}) <span>Rp${itemTotal.toLocaleString('id-ID')}</span>`;
+                    cartList.appendChild(li);
+                });
+
+                subtotalElement.textContent = `Rp${total.toLocaleString('id-ID')}`;
+                totalElement.textContent = `Rp${total.toLocaleString('id-ID')}`;
+
+                return total; // return total biar bisa dipakai nanti
+            }
+
+            // Tampilkan data saat halaman dibuka
+            let total = displayCartItems();
+
+            // === 🧾 Tangani proses checkout ===
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                // Ambil data inputan user
+                const inputs = form.querySelectorAll('input[type="text"]');
+                const namaDepan = inputs[0]?.value.trim() || "";
+                const namaBelakang = inputs[1]?.value.trim() || "";
+                const nomorHP = inputs[2]?.value.trim() || "";
+                const waktuAmbil = form.querySelector('input[type="datetime-local"]')?.value || "";
+
+                // Validasi form
+                if (!namaDepan || !namaBelakang || !nomorHP || !waktuAmbil) {
+                    alert("⚠️ Harap isi semua data sebelum checkout!");
+                    return;
+                }
+
+                // Buat objek pesanan
+                const order = {
+                    nama: namaDepan + " " + namaBelakang,
+                    hp: nomorHP,
+                    waktuAmbil: waktuAmbil,
+                    items: cartItems,
+                    total: total
+                };
+
+                console.log("Pesanan:", order);
+
+                // Tampilkan konfirmasi sukses
+                alert(
+                    `✅ Terima kasih ${order.nama}!\n\n` +
+                    `Pesanan Anda senilai Rp${total.toLocaleString('id-ID')} telah diterima.\n` +
+                    `Silakan ambil pesanan di toko pada:\n${new Date(waktuAmbil).toLocaleString('id-ID')}.`
+                );
+
+                // Hapus data keranjang
+                localStorage.removeItem("cart");
+                cartItems = []; // kosongkan array lokal juga
+                displayCartItems(); // refresh tampilan
+            });
+
+        });
+    </script>
+
+
+
 
 </body>
 

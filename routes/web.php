@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,18 @@ Route::prefix('admin')->name('admin.')->group(
     function () {
         // Helpdesk Front Office - Ticket Management
         Route::prefix('user')->name('user.')->controller(UserController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{id}', 'show')->name('show');
+            Route::get('/{id}/edit', 'edit')->name('edit');
+            Route::put('/{id}', 'update')->name('update');
+            Route::delete('/{id}', 'destroy')->name('destroy');
+        });
+
+        // customers
+        Route::prefix('customer')->name('customer.')->controller(CustomerController::class)->group(function () {
             Route::get('/', 'index')->name('index');
             Route::post('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');

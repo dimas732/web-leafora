@@ -45,44 +45,15 @@
                         <div class="col">
                             <!-- Page pre-title -->
                             <div class="page-pretitle">
-                                Overview
+                                {{ $preTitle ?? 'Data' }}
                             </div>
                             <h2 class="page-title">
-                                Admin - User
+                                {{ $title ?? 'Admin' }}
                             </h2>
                         </div>
                         <!-- Page title actions -->
                         <div class="col-auto ms-auto d-print-none">
-                            <div class="btn-list">
-                                <span class="d-none d-sm-inline">
-                                    <a href="#" class="btn">
-                                        New view
-                                    </a>
-                                </span>
-                                <a href="#" class="btn btn-primary d-none d-sm-inline-block"
-                                    data-bs-toggle="modal" data-bs-target="#modal-report">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 5l0 14" />
-                                        <path d="M5 12l14 0" />
-                                    </svg>
-                                    Create new report
-                                </a>
-                                <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                                    data-bs-target="#modal-report" aria-label="Create new report">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 5l0 14" />
-                                        <path d="M5 12l14 0" />
-                                    </svg>
-                                </a>
-                            </div>
+                            @stack('page-action')
                         </div>
                     </div>
                 </div>
@@ -157,8 +128,8 @@
                     <div class="form-selectgroup-boxes row mb-3">
                         <div class="col-lg-6">
                             <label class="form-selectgroup-item">
-                                <input type="radio" name="report-type" value="1"
-                                    class="form-selectgroup-input" checked>
+                                <input type="radio" name="report-type" value="1" class="form-selectgroup-input"
+                                    checked>
                                 <span class="form-selectgroup-label d-flex align-items-center p-3">
                                     <span class="me-3">
                                         <span class="form-selectgroup-check"></span>
@@ -262,6 +233,7 @@
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js?1684106062" defer></script>
     <script src="./dist/js/demo.min.js?1684106062" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/js/tabler.min.js"></script>
     <script>
         // @formatter:off
         document.addEventListener("DOMContentLoaded", function() {
