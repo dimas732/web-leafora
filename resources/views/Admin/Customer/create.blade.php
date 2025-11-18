@@ -23,6 +23,7 @@
                     <input type="text" name="phone" class="form-control" placeholder="Enter your phone number!">
                 </div>
                 <div class="mb-3">
+                    <a href="{{ route('admin.customer.index') }}" class="btn me-auto">Close</a>
                     <input type="submit" class="btn btn-primary float-end" value="Submit">
                 </div>
             </form>

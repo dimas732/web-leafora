@@ -2,7 +2,7 @@
 
 @php
     $preTitle = 'Data';
-    $title = 'Admin - Customers';
+    $title = 'Admin - Order';
 @endphp
 
 @push('page-action')
@@ -12,7 +12,7 @@
                 New view
             </a>
         </span>
-        <a href="{{ route('admin.customer.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+        <a href="{{ route('admin.orders.create') }}" class="btn btn-primary d-none d-sm-inline-block">
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -20,10 +20,10 @@
                 <path d="M12 5l0 14" />
                 <path d="M5 12l14 0" />
             </svg>
-            Create new report
+            Tambah Data
         </a>
         <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report"
-            aria-label="Create new report">
+            aria-label="Tambah Data">
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -38,7 +38,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Customer Data Management</h3>
+            <h3 class="card-title">Manajemen Data Order</h3>
         </div>
         <div class="card-body border-bottom py-3">
             @if (session('success'))
@@ -76,27 +76,39 @@
                                 <path d="M6 15l6 -6l6 6" />
                             </svg>
                         </th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Phone</th>
+                        <th>Kode Order</th>
+                        <th>Tanggal Order</th>
+                        <th>Waktu Ambil</th>
+                        <th>Harga Total</th>
+                        <th>Status</th>
                         <th class="w-1"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($customers as $item)
+                    @foreach ($orders as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td class="text-capitalize">{{ $item->first_name }}</td>
-                            <td class="text-capitalize">{{ $item->last_name }}</td>
-                            <td>{{ $item->phone }}</td>
+                            <td class="text-capitalize">{{ $item->order_code }}</td>
+                            <td class="text-capitalize">{{ $item->order_date }}</td>
+                            <td>{{ $item->pickup_time }}</td>
+                            <td>Rp {{ $item->total_price }}</td>
+                            <td>
+                                @if ($item->status == 'Pending')
+                                    <span class="badge bg-yellow-lt">Pending</span>
+                                @elseif ($item->status == 'Completed')
+                                    <span class="badge bg-green-lt">Completed</span>
+                                @else
+                                    <span class="badge bg-red-lt">Canceled</span>
+                                @endif
+                            </td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-1">
-                                    <a href="{{ route('admin.customer.edit', $item->id) }}"
+                                    <a href="{{ route('admin.orders.edit', $item->id) }}"
                                         class="btn btn btn-ghost-warning">Edit</a>
                                     <a href="#" data-bs-toggle="modal"
                                         data-bs-target="#modal-small{{ $item->id }}"
                                         class="btn btn btn-ghost-danger">Delete</a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-team{{ $item->id }}"
+                                    <a href="{{ route('admin.orders.show', $item->id) }}"
                                         class="btn btn btn-ghost-info">Show</a>
                                 </div>
                             </td>
@@ -104,7 +116,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @foreach ($customers as $item)
+            @foreach ($orders as $item)
                 {{-- Modal For Delete --}}
                 <div class="modal modal-blur fade" id="modal-small{{ $item->id }}" tabindex="-1" role="dialog"
                     aria-hidden="true">
@@ -117,7 +129,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-link link-secondary me-auto"
                                     data-bs-dismiss="modal">Cancel</button>
-                                <form action="{{ route('admin.customer.destroy', $item->id) }}" method="POST">
+                                <form action="{{ route('admin.orders.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Hapus</button>

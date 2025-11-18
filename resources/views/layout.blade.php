@@ -230,6 +230,8 @@
     <script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1684106062" defer></script>
     <script src="./dist/libs/jsvectormap/dist/maps/world.js?1684106062" defer></script>
     <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js?1684106062" defer></script>
+    {{-- Chart js --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js?1684106062" defer></script>
     <script src="./dist/js/demo.min.js?1684106062" defer></script>

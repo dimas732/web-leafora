@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('Admin.Customer.index', [
-            'customers' => Customer::get()
+        return view('Admin.Categories.index', [
+            'categories' => Categories::get()
         ]);
     }
 
@@ -27,7 +27,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('Admin.Customer.create');
+        return view('Admin.Categories.create');
     }
 
     /**
@@ -38,14 +38,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $customers = new Customer();
+        $categories = new Categories();
 
-        $customers->first_name = $request->first_name;
-        $customers->last_name = $request->last_name;
-        $customers->phone = $request->phone;
+        $categories->name = $request->name;
+        $categories->description = $request->description;
 
-        $customers->save();
-        return redirect()->route('admin.customer.index')->with('success', 'Data berhasil ditambahkan!');
+        $categories->save();
+        return redirect()->route('admin.categories.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -67,10 +66,10 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customers = Customer::find($id);
+        $categories = Categories::find($id);
 
-        return view('Admin.Customer.edit', [
-            'customers' => $customers
+        return view('Admin.Categories.edit', [
+            'categories' => $categories
         ]);
     }
 
@@ -83,14 +82,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customers = Customer::find($id);
+        $categories = Categories::find($id);
 
-        $customers->first_name = $request->first_name;
-        $customers->last_name = $request->last_name;
-        $customers->phone = $request->phone;
+        $categories->name = $request->name;
+        $categories->description = $request->description;
 
-        $customers->save();
-        return redirect()->route('admin.customer.index')->with('success', 'Data berhasil diupdate!');
+        $categories->save();
+        return redirect()->route('admin.categories.index')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -101,10 +99,9 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $customers = Customer::find($id);
-        $customers->delete();
+        $categories = Categories::find($id);
+        $categories->delete();
 
-        return redirect()->route('admin.customer.index')->with('success', 'Data berhasil dihapus!');
-
+        return redirect()->route('admin.categories.index');
     }
 }

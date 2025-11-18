@@ -2,7 +2,7 @@
 
 @php
     $preTitle = 'Data';
-    $title = 'Admin - Customers';
+    $title = 'Admin - Categories';
 @endphp
 
 @push('page-action')
@@ -12,7 +12,7 @@
                 New view
             </a>
         </span>
-        <a href="{{ route('admin.customer.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary d-none d-sm-inline-block">
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -35,10 +35,12 @@
     </div>
 @endpush
 
+
+
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Customer Data Management</h3>
+            <h3 class="card-title">Categories Data Management</h3>
         </div>
         <div class="card-body border-bottom py-3">
             @if (session('success'))
@@ -76,22 +78,18 @@
                                 <path d="M6 15l6 -6l6 6" />
                             </svg>
                         </th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Phone</th>
+                        <th>Nama Kategori</th>
                         <th class="w-1"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($customers as $item)
+                    @foreach ($categories as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td class="text-capitalize">{{ $item->first_name }}</td>
-                            <td class="text-capitalize">{{ $item->last_name }}</td>
-                            <td>{{ $item->phone }}</td>
+                            <td class="text-capitalize">{{ $item->name }}</td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-1">
-                                    <a href="{{ route('admin.customer.edit', $item->id) }}"
+                                    <a href="{{ route('admin.categories.edit', $item->id) }}"
                                         class="btn btn btn-ghost-warning">Edit</a>
                                     <a href="#" data-bs-toggle="modal"
                                         data-bs-target="#modal-small{{ $item->id }}"
@@ -104,7 +102,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @foreach ($customers as $item)
+            @foreach ($categories as $item)
                 {{-- Modal For Delete --}}
                 <div class="modal modal-blur fade" id="modal-small{{ $item->id }}" tabindex="-1" role="dialog"
                     aria-hidden="true">
@@ -117,7 +115,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-link link-secondary me-auto"
                                     data-bs-dismiss="modal">Cancel</button>
-                                <form action="{{ route('admin.customer.destroy', $item->id) }}" method="POST">
+                                <form action="{{ route('admin.categories.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Hapus</button>
@@ -140,38 +138,19 @@
                             <div class="modal-body">
                                 <div class="row mb-3 align-items-end">
                                     <div class="col">
-                                        <label class="form-label">Kode Supplier</label>
-                                        <input type="text" class="form-control" value="{{ $item->cust_code }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="row mb-3 align-items-end">
-                                    <div class="col">
-                                        <label class="form-label">Nama Depan</label>
-                                        <input type="text" class="form-control" value="{{ $item->first_name }}"
-                                            readonly />
-                                    </div>
-                                    <div class="col">
-                                        <label class="form-label">Nama Belakang</label>
-                                        <input type="text" class="form-control" value="{{ $item->last_name }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="row mb-3 align-items-end">
-                                    <div class="col">
-                                        <label class="form-label">Kontak</label>
-                                        <input type="text" class="form-control" value="{{ $item->phone }}"
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" value="{{ $item->name }}"
                                             readonly />
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="form-label">Dibuat pada:</label>
-                                    <h5 class="text text-secondary">{{ $item->created_at }}</h5>
+                                    <label class="form-label">Deskripsi</label>
+                                    <textarea class="form-control" readonly>{{ $item->description }}</textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                                <a href="{{ route('admin.customer.edit', $item->id) }}" class="btn btn-dark">Edit</a>
+                                <a href="{{ route('admin.categories.edit', $item->id) }}" class="btn btn-dark">Edit</a>
                             </div>
                         </div>
                     </div>

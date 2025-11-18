@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('Admin.Customer.index', [
-            'customers' => Customer::get()
+        return view('Admin.Supplier.index', [
+            'suppliers' => Supplier::get()
         ]);
     }
 
@@ -27,7 +27,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('Admin.Customer.create');
+        return view('Admin.Supplier.create');
     }
 
     /**
@@ -38,14 +38,14 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $customers = new Customer();
+        $suppliers = new Supplier();
 
-        $customers->first_name = $request->first_name;
-        $customers->last_name = $request->last_name;
-        $customers->phone = $request->phone;
+        $suppliers->name = $request->name;
+        $suppliers->phone = $request->phone;
+        $suppliers->address = $request->address;
 
-        $customers->save();
-        return redirect()->route('admin.customer.index')->with('success', 'Data berhasil ditambahkan!');
+        $suppliers->save();
+        return redirect()->route('admin.supplier.index');
     }
 
     /**
@@ -67,10 +67,10 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customers = Customer::find($id);
+        $suppliers = Supplier::find($id);
 
-        return view('Admin.Customer.edit', [
-            'customers' => $customers
+        return view('Admin.Supplier.edit', [
+            'suppliers' => $suppliers
         ]);
     }
 
@@ -83,14 +83,14 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customers = Customer::find($id);
+        $suppliers = Supplier::find($id);
 
-        $customers->first_name = $request->first_name;
-        $customers->last_name = $request->last_name;
-        $customers->phone = $request->phone;
+        $suppliers->name = $request->name;
+        $suppliers->phone = $request->phone;
+        $suppliers->address = $request->address;
 
-        $customers->save();
-        return redirect()->route('admin.customer.index')->with('success', 'Data berhasil diupdate!');
+        $suppliers->save();
+        return redirect()->route('admin.supplier.index');
     }
 
     /**
@@ -101,10 +101,10 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $customers = Customer::find($id);
-        $customers->delete();
+        $suppliers = Supplier::find($id);
+        $suppliers->delete();
 
-        return redirect()->route('admin.customer.index')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('admin.supplier.index');
 
     }
 }
