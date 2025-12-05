@@ -7,6 +7,9 @@ use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\ProductExport;
+use App\Imports\ProductImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -138,5 +141,21 @@ class ProductController extends Controller
         $products->delete();
 
         return redirect()->route('admin.product.index')->with('success', 'Data berhasil dihapus!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProductExport, 'products.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        Excel::import(new ProductImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Import berhasil!');
     }
 }

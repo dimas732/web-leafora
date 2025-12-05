@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BatchController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/landing-page', function(){
+    return view('layout_home');
+});
 
 Route::get('/', [DashboardController::class, 'index']);
 
@@ -57,6 +62,8 @@ Route::prefix('admin')->name('admin.')->group(
             Route::post('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
+            Route::get('/export', 'export')->name('export');
+            Route::post('/import', 'import')->name('import');
             Route::get('/{id}', 'show')->name('show');
             Route::get('/{id}/edit', 'edit')->name('edit');
             Route::put('/{id}', 'update')->name('update');
@@ -69,6 +76,8 @@ Route::prefix('admin')->name('admin.')->group(
             Route::post('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
+            Route::get('/export', 'export')->name('export');
+            Route::post('/import', 'import')->name('import');
             Route::get('/{id}', 'show')->name('show');
             Route::get('/{id}/edit', 'edit')->name('edit');
             Route::put('/{id}', 'update')->name('update');
@@ -81,6 +90,8 @@ Route::prefix('admin')->name('admin.')->group(
             Route::post('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
+            Route::get('/export', 'export')->name('export');
+            Route::post('/import', 'import')->name('import');
             Route::get('/{id}', 'show')->name('show');
             Route::get('/{id}/edit', 'edit')->name('edit');
             Route::put('/{id}', 'update')->name('update');
@@ -105,6 +116,20 @@ Route::prefix('admin')->name('admin.')->group(
             Route::post('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
+            Route::get('/{id}', 'show')->name('show');
+            Route::get('/{id}/edit', 'edit')->name('edit');
+            Route::put('/{id}', 'update')->name('update');
+            Route::delete('/{id}', 'destroy')->name('destroy');
+        });
+
+        // batch
+        Route::prefix('batch')->name('batch.')->controller(BatchController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/export', 'export')->name('export');
+            Route::post('/import', 'import')->name('import');
             Route::get('/{id}', 'show')->name('show');
             Route::get('/{id}/edit', 'edit')->name('edit');
             Route::put('/{id}', 'update')->name('update');

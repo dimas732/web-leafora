@@ -2,17 +2,17 @@
 
 @php
     $preTitle = 'Data';
-    $title = 'Admin - Suppliers';
+    $title = 'Admin - Batch';
 @endphp
 
 @push('page-action')
     <div class="btn-list">
         <span class="d-none d-sm-inline">
-            <a href="{{ route('admin.supplier.export') }}" class="btn">
+            <a href="{{ route('admin.batch.export') }}" class="btn">
                 Export Data
             </a>
         </span>
-        <a href="{{ route('admin.supplier.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+        <a href="{{ route('admin.batch.create') }}" class="btn btn-primary d-none d-sm-inline-block">
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -38,11 +38,17 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Supplier Data Management</h3>
+            <h3 class="card-title">Batch Data Management</h3>
         </div>
         <div class="card-body border-bottom py-3">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
             <div class="d-flex">
-                <form action="{{ route('admin.product.import') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.batch.import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="file" class="form-control mb-2" required>
                     <button type="submit" class="btn btn-primary">Import Excel</button>
@@ -67,39 +73,51 @@
                                 <path d="M6 15l6 -6l6 6" />
                             </svg>
                         </th>
-                        <th>Kode Supplier</th>
-                        <th>Nama Supplier</th>
-                        <th>Nomor Telpon</th>
-                        <th>Alamat</th>
+                        <th>Kode Batch</th>
+                        <th>Kode Produk</th>
+                        <th>Tanggal Kadaluwarsa</th>
+                        <th>Status</th>
                         <th class="w-1"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($suppliers as $item)
+                    @foreach ($batch as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->sup_code }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->address }}</td>
+                            <td class="text-capitalize">{{ $item->batch_code }}</td>
+                            <td class="text-capitalize">{{ $item->products->product_code }}</td>
+                            <td>{{ $item->exp_date }}</td>
+                            <td>
+                                @php
+                                    $today = \Carbon\Carbon::today();
+                                    $exp = \Carbon\Carbon::parse($item->exp_date);
+                                @endphp
+
+                                @if ($exp->isPast())
+                                    <span class="badge bg-danger-lt">Expired</span>
+                                @elseif ($exp->diffInDays($today) <= 30)
+                                    <span class="badge bg-warning-lt">Hampir Expired</span>
+                                @else
+                                    <span class="badge bg-success-lt">Aktif</span>
+                                @endif
+                            </td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-1">
-                                    <a href="{{ route('admin.supplier.edit', $item->id) }}"
+                                    <a href="{{ route('admin.batch.edit', $item->id) }}"
                                         class="btn btn btn-ghost-warning">Edit</a>
                                     <a href="#" data-bs-toggle="modal"
                                         data-bs-target="#modal-small{{ $item->id }}"
                                         class="btn btn btn-ghost-danger">Delete</a>
                                     <a href="#" data-bs-toggle="modal"
                                         data-bs-target="#modal-team{{ $item->id }}"
-                                        class="btn btn
-                                        btn-ghost-info">Show</a>
+                                        class="btn btn btn-ghost-info">Show</a>
                                 </div>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            @foreach ($suppliers as $item)
+            @foreach ($batch as $item)
                 {{-- Modal For Delete --}}
                 <div class="modal modal-blur fade" id="modal-small{{ $item->id }}" tabindex="-1" role="dialog"
                     aria-hidden="true">
@@ -112,7 +130,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-link link-secondary me-auto"
                                     data-bs-dismiss="modal">Cancel</button>
-                                <form action="{{ route('admin.supplier.destroy', $item->id) }}" method="POST">
+                                <form action="{{ route('admin.batch.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Hapus</button>
@@ -136,14 +154,19 @@
                                 <div class="row mb-3 align-items-end">
                                     <div class="col">
                                         <label class="form-label">Kode Supplier</label>
-                                        <input type="text" class="form-control" value="{{ $item->sup_code }}"
+                                        <input type="text" class="form-control" value="{{ $item->cust_code }}"
                                             readonly />
                                     </div>
                                 </div>
                                 <div class="row mb-3 align-items-end">
                                     <div class="col">
-                                        <label class="form-label">Nama Supplier</label>
-                                        <input type="text" class="form-control" value="{{ $item->name }}"
+                                        <label class="form-label">Nama Depan</label>
+                                        <input type="text" class="form-control" value="{{ $item->first_name }}"
+                                            readonly />
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label">Nama Belakang</label>
+                                        <input type="text" class="form-control" value="{{ $item->last_name }}"
                                             readonly />
                                     </div>
                                 </div>
@@ -155,13 +178,13 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="form-label">Alamat</label>
-                                    <textarea class="form-control" readonly>{{ $item->address }}</textarea>
+                                    <label class="form-label">Dibuat pada:</label>
+                                    <h5 class="text text-secondary">{{ $item->created_at }}</h5>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                                <a href="{{ route('admin.supplier.edit', $item->id) }}" class="btn btn-dark">Edit</a>
+                                <a href="{{ route('admin.batch.edit', $item->id) }}" class="btn btn-dark">Edit</a>
                             </div>
                         </div>
                     </div>

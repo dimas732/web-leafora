@@ -18,6 +18,7 @@ class Product extends Model
         'price',
         'stock',
         'unit',
+        'picture',
         'status'
     ];
 
@@ -29,5 +30,10 @@ class Product extends Model
     public function details()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+
+    public function batch()
+    {
+        return $this->hasMany(Batch::class);
     }
 }

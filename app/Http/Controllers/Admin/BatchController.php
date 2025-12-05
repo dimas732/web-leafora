@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Exports\SupplierExport;
+use App\Exports\BatchExport;
 use App\Http\Controllers\Controller;
-use App\Imports\SupplierImport;
-use App\Models\Supplier;
+use App\Imports\BatchImport;
+use App\Models\Batch;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-class SupplierController extends Controller
+class BatchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +19,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        return view('Admin.Supplier.index', [
-            'suppliers' => Supplier::get()
-        ]);
+        $batch = Batch::with('products')->get();
+        return view('Admin.Batch.index', compact('batch'));
     }
 
     /**
@@ -30,7 +30,8 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('Admin.Supplier.create');
+        $products = Product::all();
+        return view('Admin.Batch.create', compact('products'));
     }
 
     /**
@@ -41,14 +42,13 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        $suppliers = new Supplier();
+        $batch = new Batch();
 
-        $suppliers->name = $request->name;
-        $suppliers->phone = $request->phone;
-        $suppliers->address = $request->address;
+        $batch->product_id = $request->product_id;
+        $batch->exp_date = $request->exp_date;
 
-        $suppliers->save();
-        return redirect()->route('admin.supplier.index');
+        $batch->save();
+        return redirect()->route('admin.batch.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -70,10 +70,10 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        $suppliers = Supplier::find($id);
-
-        return view('Admin.Supplier.edit', [
-            'suppliers' => $suppliers
+        $batch = Batch::find($id);
+        $products = Product::all();
+        return view('Admin.Batch.edit', compact('products'), [
+            'batch' => $batch
         ]);
     }
 
@@ -86,14 +86,13 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $suppliers = Supplier::find($id);
+        $batch = Batch::find();
 
-        $suppliers->name = $request->name;
-        $suppliers->phone = $request->phone;
-        $suppliers->address = $request->address;
+        $batch->product_id = $request->product_id;
+        $batch->exp_date = $request->exp_date;
 
-        $suppliers->save();
-        return redirect()->route('admin.supplier.index');
+        $batch->save();
+        return redirect()->route('admin.batch.index')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -104,16 +103,12 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        $suppliers = Supplier::find($id);
-        $suppliers->delete();
-
-        return redirect()->route('admin.supplier.index');
-
+        //
     }
 
     public function export()
     {
-        return Excel::download(new SupplierExport, 'suppliers.xlsx');
+        return Excel::download(new BatchExport, 'batch.xlsx');
     }
 
     public function import(Request $request)
@@ -122,7 +117,7 @@ class SupplierController extends Controller
             'file' => 'required|mimes:xlsx,xls',
         ]);
 
-        Excel::import(new SupplierImport, $request->file('file'));
+        Excel::import(new BatchImport, $request->file('file'));
 
         return redirect()->back()->with('success', 'Import berhasil!');
     }

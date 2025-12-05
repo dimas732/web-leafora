@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\CategoriesExport;
 use App\Http\Controllers\Controller;
+use App\Imports\CategoriesImport;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoriesController extends Controller
 {
@@ -103,5 +106,21 @@ class CategoriesController extends Controller
         $categories->delete();
 
         return redirect()->route('admin.categories.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new CategoriesExport, 'categories.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        Excel::import(new CategoriesImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Import berhasil!');
     }
 }

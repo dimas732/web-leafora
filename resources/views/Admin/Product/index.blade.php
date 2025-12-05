@@ -8,8 +8,8 @@
 @push('page-action')
     <div class="btn-list">
         <span class="d-none d-sm-inline">
-            <a href="#" class="btn">
-                New view
+            <a href="{{ route('admin.product.export') }}" class="btn">
+                Export Data
             </a>
         </span>
         <a href="{{ route('admin.product.create') }}" class="btn btn-primary d-none d-sm-inline-block">
@@ -48,14 +48,11 @@
                 </div>
             @endif
             <div class="d-flex">
-                <div class="text-muted">
-                    Show
-                    <div class="mx-2 d-inline-block">
-                        <input type="text" class="form-control form-control-sm" value="8" size="3"
-                            aria-label="Invoices count">
-                    </div>
-                    entries
-                </div>
+                <form action="{{ route('admin.product.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" class="form-control mb-2" required>
+                    <button type="submit" class="btn btn-primary">Import Excel</button>
+                </form>
                 <div class="ms-auto text-muted">
                     Search:
                     <div class="ms-2 d-inline-block">
