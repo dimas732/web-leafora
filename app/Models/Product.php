@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -16,15 +17,17 @@ class Product extends Model
         'name',
         'description',
         'price',
+        'cost',
         'stock',
         'unit',
         'picture',
-        'status'
+        'status',
+        'created_at'
     ];
 
     public function categories()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categories::class, 'category_id');
     }
 
     public function details()
@@ -35,5 +38,14 @@ class Product extends Model
     public function batch()
     {
         return $this->hasMany(Batch::class);
+    }
+
+    public function getImageUrl()
+    {
+        if ($this->picture && Storage::exists('public/' . $this->picture)) {
+            return asset('storage/' . $this->picture);
+        }
+
+        return asset('img/daging.png');
     }
 }

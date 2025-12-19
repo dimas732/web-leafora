@@ -16,7 +16,9 @@ class Order extends Model
         'cust_phone',
         'pickup_time',
         'total_price',
-        'status'
+        'status',
+        'invoice',
+        'created_at'
     ];
 
     public function details()

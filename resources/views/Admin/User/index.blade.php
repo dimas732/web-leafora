@@ -41,10 +41,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {{-- <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice">
+                    @foreach ($users as $item)
+                        <tr>
+                            {{-- <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice">
                         </td> --}}
-                        @foreach ($users as $item)
+
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
@@ -55,8 +56,9 @@
                                     <a href="#" class="btn btn btn-ghost-info">Show</a>
                                 </div>
                             </td>
-                        @endforeach
-                    </tr>
+
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

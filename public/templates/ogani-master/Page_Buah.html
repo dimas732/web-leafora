@@ -53,7 +53,9 @@
             <div class="product-img" onclick="goToDetail(1)">
               <img src="img/product/details/anggur.jpg" alt="Anggur" />
               <div class="product-action">
-                <button onclick="addToCart('Anggur', 35000, 'img/product/details/anggur.jpg')" class="btn btn-sm btn-success"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button class="btn btn-sm btn-success">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
               </div>
             </div>
             <div class="product-info">
@@ -202,133 +204,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        function addToCart(name, price, image) {
-
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        const existing = cart.find(item => item.name === name);
-
-        if (existing) {
-            existing.quantity += 1;
-        } else {
-            cart.push({ name, price, image, quantity: 1 });
-        }
-
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        alert(`${name} telah ditambahkan ke keranjang!`);
-        }
-
-        const products = [
-                {
-                    id: 1,
-                    name: "Anggur Hijau",
-                    price: "Rp 35.000 / 500 gr",
-                    image: "img/product/details/anggur.jpg",
-                    rating: 5,
-                    reviews: 14,
-                    desc: "Anggur segar pilihan dengan kualitas premium yang dipetik langsung dari kebun terbaik. Memiliki rasa manis alami dengan tekstur lembut dan kadar air tinggi, cocok dinikmati sebagai camilan sehat maupun pelengkap hidangan. Dikemas dengan higienis untuk menjaga kesegaran dan cita rasa alaminya.",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "5 kg"
-                },
-                {
-                    id: 2,
-                    name: "Apel",
-                    price: "Rp 27.000 / kg",
-                    image: "img/product/details/Apel.jpg",
-                    rating: 5,
-                    reviews: 10,
-                    desc: "Apel segar berkualitas tinggi dengan tekstur renyah dan rasa manis sedikit asam yang menyegarkan. Dipetik langsung dari perkebunan pilihan dan dikemas dengan standar kebersihan tinggi untuk menjaga kualitas serta kesegarannya. Cocok untuk dikonsumsi langsung maupun dijadikan olahan seperti jus, salad, atau kue.",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "1 kg"
-                },
-                {
-                    id: 3,
-                    name: "Jeruk",
-                    price: "Rp 35.000 / kg",
-                    image: "img/jeruk_mandarin.jpg",
-                    rating: 5,
-                    reviews: 10,
-                    desc: "Jeruk Mandarin segar dengan cita rasa manis alami dan aroma khas yang menyegarkan. Memiliki kulit tipis dan mudah dikupas, cocok dikonsumsi langsung maupun dijadikan jus segar. Dipetik dari kebun pilihan dan dikemas dengan hati-hati agar tetap terjaga kesegarannya hingga sampai di tangan Anda",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "500g"
-                },
-                {
-                    id: 4,
-                    name: "Nanas Madu",
-                    price: "Rp 10.000 / kg",
-                    image: "img/product/details/nanas.jpg",
-                    rating: 5,
-                    reviews: 10,
-                    desc: "Nanas Madu merupakan varian nanas unggulan dengan rasa manis legit dan aroma khas yang menggugah selera. Daging buahnya kuning cerah, bertekstur lembut, serta tidak terlalu asam. Dipanen saat matang sempurna untuk menghasilkan cita rasa terbaik. Cocok dikonsumsi langsung maupun dijadikan bahan olahan seperti jus, rujak, atau selai",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "400ml"
-                },
-                {
-                    id: 5,
-                    name: "Pir Kuning",
-                    price: "Rp 23.000 / kg",
-                    image: "img/product/details/pir.jpg",
-                    rating: 5,
-                    reviews: 10,
-                    desc: "Pir Kuning segar dengan daging buah lembut, juicy, dan rasa manis yang menyegarkan. Memiliki kulit berwarna kuning cerah dengan aroma khas yang menenangkan. Dipetik dari kebun pilihan dan melalui proses sortir ketat untuk memastikan hanya buah dengan kualitas terbaik yang sampai ke tangan Anda. Cocok untuk dikonsumsi langsung atau dijadikan olahan sehat",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "50g"
-                },
-                {
-                    id: 6,
-                    name: "Strawberry",
-                    price: "Rp 42.000 / kg",
-                    image: "img/product/details/stawberry.jpg",
-                    rating: 5,
-                    reviews: 10,
-                    desc: "Strawberry segar pilihan dengan warna merah cerah dan aroma harum khas yang menggoda. Memiliki perpaduan rasa manis dan sedikit asam yang menyegarkan. Dipetik langsung dari kebun dataran tinggi dan dikemas secara higienis agar kualitasnya tetap terjaga. Cocok dijadikan topping dessert, bahan jus, atau dinikmati langsung sebagai camilan sehat.",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "1 kg"
-                },
-                {
-                    id: 7,
-                    name: "Pisang Canvendish",
-                    price: "Rp 18.500 / sisir",
-                    image: "img/featured/pisang1.jpg",
-                    rating: 5,
-                    reviews: 10,
-                    desc: "Pisang Cavendish adalah pisang premium dengan kulit kuning cerah dan daging buah lembut yang manis. Teksturnya halus dan tidak mudah lembek, menjadikannya pilihan ideal untuk camilan sehat maupun bahan olahan seperti smoothie, kue, atau roti pisang. Dipetik dalam kondisi matang sempurna dan dikemas dengan higienis untuk menjaga kualitasnya.",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "500g"
-                },
-                {
-                    id: 8,
-                    name: "Alpukat Mentega",
-                    price: "Rp 35.000 / kg",
-                    image: "img/featured/alpukat.jpg",
-                    rating: 5,
-                    reviews: 10,
-                    desc: "Alpukat Mentega premium dengan daging tebal, lembut, dan berwarna kuning kehijauan khas. Memiliki rasa gurih legit tanpa rasa pahit, cocok dikonsumsi langsung maupun dijadikan bahan olahan seperti jus, salad, atau roti lapis. Dipetik dari buah matang pohon untuk menghasilkan tekstur sempurna dan cita rasa terbaik.",
-                    availability: "In Stock",
-                    shipping: "01 day shipping. Free pickup today",
-                    weight: "500g"
-                },
-
-
-            ];
-
-            // Fungsi ketika produk diklik
-            function goToDetail(id) {
-                const selected = products.find(p => p.id === id);
-                localStorage.setItem("selectedProduct", JSON.stringify(selected));
-                window.location.href = "shop-details.html";
-            }
-    </script>
-
 </body>
 </html>

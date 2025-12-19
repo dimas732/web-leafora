@@ -92,10 +92,12 @@
                             <td>{{ $item->unit }}</td>
                             <td>{{ $item->stock }}</td>
                             <td>
-                                @if ($item->stock >= 1)
-                                    <span class="badge bg-green-lt">Available</span>
+                                @if ($item->stock <= 0)
+                                    <span class="badge bg-danger-lt">Habis</span>
+                                @elseif ($item->stock < 5)
+                                    <span class="badge bg-warning-lt">Menipis ({{ $item->stock }})</span>
                                 @else
-                                    <span class="badge bg-red-lt">Not Available</span>
+                                    {{ $item->stock }}
                                 @endif
                             </td>
                             <td class="text-center">

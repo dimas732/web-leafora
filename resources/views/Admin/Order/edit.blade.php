@@ -21,7 +21,8 @@
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="form-label">No. Telpon</label>
-                            <input type="text" name="cust_phone" class="form-control" required>
+                            <input type="text" name="cust_phone" class="form-control" value="{{ $order->cust_phone }}"
+                                required>
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="form-label">Waktu Ambil</label>

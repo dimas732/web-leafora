@@ -1,117 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login - LeaFora</title>
-    <link rel="stylesheet" href="login.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
-    <!-- Google Sign-In Script -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Login - LeaFora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{-- CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
     <div class="login-container">
         <div class="login-box">
             <div class="logo">
-                <a href="./index.html"><img src="img/leafora.png" alt="LeaFora Logo"></a>
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('img/leafora.png') }}" alt="LeaFora Logo">
+                </a>
             </div>
+
             <h2>Login to LeaFora</h2>
 
-            <form id="loginForm" onsubmit="loginUser(event)" class="login-form">
+            {{-- ERROR MESSAGE --}}
+            @if ($errors->any())
+            <div class="alert-error">
+                {{ $errors->first() }}
+            </div>
+            @endif
+
+            {{-- FORM LOGIN BREEZE --}}
+            <form method="POST" action="{{ route('login') }}" class="login-form">
+                @csrf
+
                 <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" required />
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email"
+                        value="{{ old('email') }}" required autofocus>
                 </div>
+
                 <div class="input-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
                 </div>
-                <button type="submit" class="btn-login">Login</button>
+
+                <button type="submit" class="btn-login">
+                    Login
+                </button>
             </form>
 
-            <!-- Divider -->
-            <div class="divider">
-                <span>or</span>
-            </div>
-
-            <!-- Google Sign-In Button -->
-            <div id="g_id_onload"
-                data-client_id="MASUKKAN_CLIENT_ID_KAMU_DI_SINI"
-                data-context="signin"
-                data-ux_mode="popup"
-                data-callback="handleCredentialResponse"
-                data-auto_prompt="false">
-            </div>
-
-            <div class="g_id_signin"
-                data-type="standard"
-                data-shape="pill"
-                data-theme="outline"
-                data-text="signin_with"
-                data-size="large"
-                data-logo_alignment="left">
-            </div>
-
-            <p class="signup-text">Don't have an account? <a href="signup.html">Sign up</a></p>
+            <p class="signup-text">
+                Don't have an account?
+                <a href="{{ route('register') }}">Sign up</a>
+            </p>
         </div>
     </div>
 
-    <!-- Decode Token Script -->
-    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
-
-    <!-- Login Script -->
-    <script>
-        function loginUser(e) {
-            e.preventDefault();
-
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // Ambil data user dari localStorage
-            const users = JSON.parse(localStorage.getItem("users")) || [];
-            const user = users.find(u => u.userName === username && u.password === password);
-
-            if (user) {
-                // Simpan status login
-                localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("loggedInUser", JSON.stringify(user));
-
-                alert("Login berhasil! Kamu akan diarahkan ke halaman utama");
-                window.location.href = "index.html"; 
-            } else {
-                alert("Username atau password salah!");
-            }
-        }
-
-        // Optional: Google Sign-In
-        function handleCredentialResponse(response) {
-            const data = jwt_decode(response.credential);
-            console.log("User Info:", data);
-            alert(`Welcome, ${data.name}!`);
-        }
-    function loginUser(e) {
-        e.preventDefault();
-
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        // Ambil data user dari localStorage
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const user = users.find(u => u.userName === username && u.password === password);
-
-        if (user) {
-        // Simpan status login
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-
-        alert("Login berhasil!");
-        window.location.href = "index.html";} 
-        
-        else {
-        alert("Username atau password salah!");
-        }
-    }   
-</script>
 </body>
+
 </html>

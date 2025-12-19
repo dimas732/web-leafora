@@ -28,7 +28,11 @@
                 <div class="mb-3">
                     <div class="row">
                         <div class="col">
-                            <label for="form-label">Harga</label>
+                            <label for="form-label">Harga Modal</label>
+                            <input type="number" class="form-control" name="cost">
+                        </div>
+                        <div class="col">
+                            <label for="form-label">Harga Jual</label>
                             <input type="number" class="form-control" name="price">
                         </div>
                         <div class="col">

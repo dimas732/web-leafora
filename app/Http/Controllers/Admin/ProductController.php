@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\ProductExport;
 use App\Imports\ProductImport;
+use App\Models\PurchaseDetail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
@@ -56,6 +57,7 @@ class ProductController extends Controller
         $products->name = $request->name;
         $products->category_id = $request->category_id;
         $products->price = $request->price;
+        $products->cost = $request->cost;
         $products->stock = $request->stock;
         $products->unit = $request->unit;
         $products->description = $request->description;
@@ -105,27 +107,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $products = Product::find($id);
+        $products = Product::findOrFail($id);
 
-        $picture = null;
+        // Simpan nama gambar lama jika tidak ada upload baru
+        $picture = $products->picture;
 
         if ($request->hasFile('picture')) {
-            if(Storage::exists($products->picture))
-            {
-                Storage::delete($products->picture);
+
+            // Hapus gambar lama (jika ada)
+            if (!empty($products->picture) && Storage::exists('public/' . $products->picture)) {
+                Storage::delete('public/' . $products->picture);
             }
-            $picture = $request->file('picture')->store('pictures');
+
+            // Upload gambar baru
+            $picture = $request->file('picture')->store('products', 'public');
         }
 
+        // Update field lainnya
         $products->name = $request->name;
         $products->category_id = $request->category_id;
         $products->price = $request->price;
+        $products->cost = $request->cost;
         $products->stock = $request->stock;
         $products->unit = $request->unit;
         $products->description = $request->description;
         $products->picture = $picture;
 
         $products->save();
+
         return redirect()->route('admin.product.index')->with('success', 'Data berhasil diupdate!');
     }
 
@@ -157,5 +166,37 @@ class ProductController extends Controller
         Excel::import(new ProductImport, $request->file('file'));
 
         return redirect()->back()->with('success', 'Import berhasil!');
+    }
+
+    // Ambil harga beli terakhir
+    public function getLastPurchasePrice($id)
+    {
+        $last = PurchaseDetail::where('product_id', $id)
+            ->latest()
+            ->first();
+
+        return response()->json([
+            'price' => $last ? $last->price : 0
+        ]);
+    }
+
+    // Simpan produk baru via AJAX
+    public function storeAjax(Request $request)
+    {
+        $request->validate([
+            'name'  => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'nullable|integer|min:0'
+        ]);
+
+        $product = Product::firstOrCreate(
+            ['name' => $request->name],
+            [
+                'price' => $request->price,
+                'stock' => $request->stock ?? 0
+            ]
+        );
+
+        return response()->json($product);
     }
 }

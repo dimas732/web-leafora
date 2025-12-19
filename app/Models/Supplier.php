@@ -16,4 +16,9 @@ class Supplier extends Model
         'phone',
         'address'
     ];
+
+    public function purchase()
+    {
+        return $this->hasMany(Purchasing::class);
+    }
 }

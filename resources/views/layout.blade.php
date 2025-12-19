@@ -20,6 +20,8 @@
     <link href="{{ asset('./dist/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet" />
     <link href="{{ asset('./dist/css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet" />
     <link href="{{ asset('./dist/css/demo.min.css?1684106062') }}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -232,6 +234,7 @@
     <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js?1684106062" defer></script>
     {{-- Chart js --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js?1684106062" defer></script>
     <script src="./dist/js/demo.min.js?1684106062" defer></script>
@@ -1052,6 +1055,20 @@
         });
         // @formatter:on
     </script>
+
+    {{-- searchable dropdowwn --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: "-- Pilih Produk --",
+                allowClear: true
+            });
+        });
+    </script>
+
 </body>
 
 </html>
