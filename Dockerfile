@@ -1,19 +1,24 @@
-# 1. Gunakan PHP 8.1 (aman untuk Laravel 9/10)
+# 1. PHP versi stabil
 FROM php:8.2-cli
 
-# 2. Install dependency sistem
+# 2. Install system dependencies
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
+    libzip-dev \
     zip \
     unzip \
     git \
     curl
 
-# 3. Install PHP extension yang dibutuhkan Laravel
+# 3. Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql
+    && docker-php-ext-install \
+        gd \
+        zip \
+        pdo \
+        pdo_mysql
 
 # 4. Set working directory
 WORKDIR /app
