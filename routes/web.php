@@ -20,7 +20,9 @@ use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboard;
 use App\Http\Controllers\Customer\InvoiceController;
 use App\Http\Controllers\Customer\ShopController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -44,6 +46,10 @@ Route::get('/', [CustomerDashboard::class, 'index'])->name('landing-page');
 Route::get('/category/{slug}', [ShopController::class, 'category'])->name('category.show');
 
 Route::get('/shopping-page', [ShopController::class, 'index'])->name('shop-grid');
+
+Route::get('/db-check', function () {
+    return DB::select('SHOW TABLES');
+});
 
 
 
