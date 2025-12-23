@@ -59,7 +59,11 @@
                 <div class="ms-auto text-muted">
                     Search:
                     <div class="ms-2 d-inline-block">
-                        <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+                        <form method="GET" action="{{ route('admin.orders.index') }}" class="ms-auto text-muted d-flex">
+                            <span class="me-2">Search:</span>
+                            <input type="text" name="q" value="{{ request('q') }}"
+                                class="form-control form-control-sm" placeholder="Invoice / Customer">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -88,7 +92,7 @@
                     @foreach ($orders as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td class="text-capitalize">{{ $item->order_code }}</td>
+                            <td class="text-capitalize">{{ $item->invoice }}</td>
                             <td class="text-capitalize">{{ $item->order_date }}</td>
                             <td>{{ $item->pickup_time }}</td>
                             <td>Rp {{ $item->total_price }}</td>

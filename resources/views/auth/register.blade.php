@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- CSS --}}
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/login.css') }}">
+    <link rel="stylesheet" href="./templates/ogani-master/css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -17,7 +17,7 @@
         <div class="login-box">
             <div class="logo">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('./templates/ogani-master/img/leafora.png') }}" alt="LeaFora Logo">
+                    <img src="./templates/ogani-master/img/leafora.png" alt="LeaFora Logo">
                 </a>
             </div>
 

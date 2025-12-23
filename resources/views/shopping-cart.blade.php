@@ -13,14 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/bootstrap.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/font-awesome.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/elegant-icons.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/nice-select.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/jquery-ui.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/owl.carousel.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/slicknav.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="./templates/ogani-master/css/style.css" type="text/css">
 
     <style>
         .btn-login-green {
@@ -121,7 +121,8 @@
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button class="btn-login-green">Logout</button>
+                                <button class="btn-login-green"><i
+                                        class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
                             </form>
                         @else
                             <a href="{{ route('login') }}" class="btn-login-green">

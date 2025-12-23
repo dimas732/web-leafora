@@ -13,14 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="./templates/ogani-master/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="./templates/ogani-master/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="./templates/ogani-master/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="./templates/ogani-master/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="./templates/ogani-master/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="./templates/ogani-master/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="./templates/ogani-master/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="./templates/ogani-master/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/style.css" type="text/css">
 
     <style>
         .btn-login-green {
@@ -63,17 +63,18 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="{{ route('landing-page') }}"><img src="./templates/ogani-master/img/logo.png" alt=""></a>
+            <a href="#"><img src="/templates/ogani-master/img/leafora.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="./templates/ogani-master/img/language.png" alt="">
+                <img src="/templates/ogani-master/img/language.png" alt="">
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
@@ -82,24 +83,15 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                @auth
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button class="btn-login-green"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
-                    </form>
-                @else
-                    <a href="{{ route('login') }}" class="btn-login-green">
-                        <i class="fa fa-user"></i> Login
-                    </a>
-                @endauth
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li><a href="{{ route('landing-page') }}">Home</a></li>
-                <li class="active"><a href="./shop-grid.html">Shop</a></li>
+                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="./contact.html">Contact</a></li>
-                <li><a href="{{ route('about-us') }}">About Us</a></li>
+                <li><a href="./About Us.html">About Us</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -111,7 +103,7 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li><i class="fa fa-envelope"></i> leafora@gmail.com</li>
                 <li>Free Shipping for all Order of $99</li>
             </ul>
         </div>
@@ -143,8 +135,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="{{ route('landing-page') }}"><img src="./templates/ogani-master/img/leafora.png"
-                                alt=""></a>
+                        <a href="index.html"><img src="/templates/ogani-master/img/leafora.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -152,9 +143,8 @@
                         <ul>
                             <li><a class="hv" href="{{ route('landing-page') }}">Home</a>
                             </li>
-                            <li class="active"><a class="hv" style="color: #56ab2f"
-                                    href="{{ route('shop-grid') }}">Shop</a></li>
-                            <li><a class="hv" href="{{ route('contact-us') }}">Contact</a>
+                            <li class="active"><a class="hv" href="{{ route('shop-grid') }}">Shop</a></li>
+                            <li><a class="hv" style="color: #56ab2f" href="{{ route('contact-us') }}">Contact</a>
                             </li>
                             <li><a class="hv" href="{{ route('about-us') }}">About Us</a></li>
                         </ul>
@@ -163,7 +153,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -183,31 +173,29 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span> KATEGORI </span>
+                            <span>KATEGORI</span>
                         </div>
                         <ul>
-                            <li><a href="{{ route('category-page.fruit.index') }}">Buah</a></li>
-                            <li><a href="{{ route('category-page.vegetables.index') }}">Sayur</a></li>
-                            <li><a href="{{ route('category-page.protein.index') }}">Protein</a></li>
-                            <li><a href="{{ route('category-page.herbs.index') }}">Bumbu</a></li>
-                            <li><a href="{{ route('category-page.others.index') }}">Produk Fresh lain</a></li>
-                            <li><a href="{{ route('category-page.staples.index') }}">Bahan Pokok</a></li>
-                        </ul>
+                            <ul>
+                                <li><a href="Page_Buah.html">Buah</a></li>
+                                <li><a href="Page_sayur.html">Sayur</a></li>
+                                <li><a href="Page_Lauk.html">Lauk</a></li>
+                                <li><a href="page_bumbu.html">Bumbu</a></li>
+                                <li><a href="page_fresh_produk.html">Produk Fresh lain</a></li>
+                                <li><a href="page_bahan_pokok.html">Bahan Pokok</a></li>
+                            </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="{{ route('shop-grid') }}" method="GET">
+                            <form action="#">
                                 <div class="hero__search__categories">
-                                    All Categories
+                                    Semua Kategori
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-
-                                <input type="text" name="q" placeholder="What do you need?"
-                                    value="{{ request('q') }}">
-
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="Apa yang anda butuhkan?">
+                                <button type="submit" class="site-btn">CARI</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -224,88 +212,89 @@
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="./templates/ogani-master/img/Market.jpg">
+    <!-- Contact Section Begin -->
+    <section class="contact spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>LeaFora Shop</h2>
-                        <div class="breadcrumb__option">
-                            <a href="{{ route('landing-page') }}">Home</a>
-                            <span>Shop</span>
-                        </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <div class="contact__widget">
+                        <span class="icon_phone"></span>
+                        <h4>TELEPON</h4>
+                        <p>+01-3-8888-6868</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <div class="contact__widget">
+                        <span class="icon_pin_alt"></span>
+                        <h4>ALAMAT</h4>
+                        <p>Jl. Ketintang, Kec. Gayungan, Kota Surabaya, Jawa Timur 60231</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <div class="contact__widget">
+                        <span class="icon_clock_alt"></span>
+                        <h4>WAKTU OPERASI</h4>
+                        <p>06:00 am to 20:00 pm</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <div class="contact__widget">
+                        <span class="icon_mail_alt"></span>
+                        <h4>Email</h4>
+                        <p>leafora@gmail.com</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Breadcrumb Section End -->
+    <!-- Contact Section End -->
 
-    <!-- Product Section Begin -->
-    <section class="product spad">
+    <!-- Map Begin -->
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49116.39176087041!2d-86.41867791216099!3d39.69977417971648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886ca48c841038a1%3A0x70cfba96bf847f0!2sPlainfield%2C%20IN%2C%20USA!5e0!3m2!1sen!2sbd!4v1586106673811!5m2!1sen!2sbd"
+            height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <div class="map-inside">
+            <i class="icon_pin"></i>
+            <div class="inside-widget">
+                <h4>Jawa Timur</h4>
+                <ul>
+                    <li>Phone: +12-345-6789</li>
+                    <li>Add:Jl. Ketintang, Kec. Gayungan, Kota Surabaya, Jawa Timur 60231</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Map End -->
+
+    <!-- Contact Form Begin -->
+    <div class="contact-form spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-5">
-                    <div class="sidebar">
-                        <div class="sidebar__item">
-                            <h4>KATEGORI</h4>
-                            <ul>
-                                <li><a href="{{ route('category-page.fruit.index') }}">Buah</a></li>
-                                <li><a href="{{ route('category-page.vegetables.index') }}">Sayur</a></li>
-                                <li><a href="{{ route('category-page.protein.index') }}">Protein</a></li>
-                                <li><a href="{{ route('category-page.herbs.index') }}">Bumbu</a></li>
-                                <li><a href="{{ route('category-page.others.index') }}">Produk Fresh lain</a></li>
-                                <li><a href="{{ route('category-page.staples.index') }}">Bahan Pokok</a></li>
-                            </ul>
-                        </div>
-                        @yield('price-range')
-                        @yield('latest-product')
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-7">
-                    <div class="product__discount">
-                        {{-- <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
-                        </div> --}}
-                        <div class="row">
-                            @yield('grid-list1')
-                        </div>
-                    </div>
-                    <div class="filter__item">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="filter__sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
-                                    </select>
-                                </div>
-                            </div>
-                            @yield('count-item')
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @yield('grid-list2')
-                    <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                <div class="col-lg-12">
+                    <div class="contact__form__title">
+                        <h2>Tinggalkan Pesan</h2>
                     </div>
                 </div>
             </div>
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" placeholder="Tuliskan Nama">
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" placeholder="Tuliskan Email">
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <textarea placeholder="Tambahkan pesan bagi kami"></textarea>
+                        <button type="submit" class="site-btn">KIRIM PESAN</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </section>
-    <!-- Product Section End -->
+    </div>
+    <!-- Contact Form End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -314,8 +303,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="{{ route('landing-page') }}"><img src="./templates/ogani-master/img/leafora.png"
-                                    alt=""></a>
+                            <a href="./index.html"><img src="img/leafora.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: Jl. Ketintang, Kec. Gayungan, Kota Surabaya, Jawa Timur 60231</li>
@@ -328,8 +316,11 @@
                     <div class="footer__widget">
                         <h6>Useful Links</h6>
                         <ul>
-                            <li><a href="{{ route('about-us') }}">About Us</a></li>
+                            <li><a href="#">About Us</a></li>
                             <li><a href="#">About Our Shop</a></li>
+                            <li><a href="#">Secure Shopping</a></li>
+                            <li><a href="#">Delivery infomation</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Our Sitemap</a></li>
                         </ul>
                         <ul>
@@ -373,8 +364,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img
-                                src="./templates/ogani-master/img/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -383,37 +373,14 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="./templates/ogani-master/js/jquery-3.3.1.min.js"></script>
-    <script src="./templates/ogani-master/js/bootstrap.min.js"></script>
-    <script src="./templates/ogani-master/js/jquery.nice-select.min.js"></script>
-    <script src="./templates/ogani-master/js/jquery-ui.min.js"></script>
-    <script src="./templates/ogani-master/js/jquery.slicknav.js"></script>
-    <script src="./templates/ogani-master/js/mixitup.min.js"></script>
-    <script src="./templates/ogani-master/js/owl.carousel.min.js"></script>
-    <script src="./templates/ogani-master/js/main.js"></script>
-
-    <script>
-        var rangeMin = $(".price-range").data("min");
-        var rangeMax = $(".price-range").data("max");
-
-        $(".price-range").slider({
-            range: true,
-            min: rangeMin,
-            max: rangeMax,
-            values: [rangeMin, rangeMax],
-            slide: function(event, ui) {
-                $("#minamount").val(ui.values[0]);
-                $("#maxamount").val(ui.values[1]);
-            },
-            change: function(event, ui) {
-                // otomatis submit ketika slider digeser
-                $("#priceFilterForm").submit();
-            }
-        });
-
-        $("#minamount").val($(".price-range").slider("values", 0));
-        $("#maxamount").val($(".price-range").slider("values", 1));
-    </script>
+    <script src="/templates/ogani-master/js/jquery-3.3.1.min.js"></script>
+    <script src="/templates/ogani-master/js/bootstrap.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.nice-select.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery-ui.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.slicknav.js"></script>
+    <script src="/templates/ogani-master/js/mixitup.min.js"></script>
+    <script src="/templates/ogani-master/js/owl.carousel.min.js"></script>
+    <script src="/templates/ogani-master/js/main.js"></script>
 
 
 

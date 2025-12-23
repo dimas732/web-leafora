@@ -15,11 +15,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <!-- CSS files -->
-    <link href="{{ asset('./dist/css/tabler.min.css?1684106062') }}" rel="stylesheet" />
-    <link href="{{ asset('./dist/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet" />
-    <link href="{{ asset('./dist/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet" />
-    <link href="{{ asset('./dist/css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet" />
-    <link href="{{ asset('./dist/css/demo.min.css?1684106062') }}" rel="stylesheet" />
+    <link href="/dist/css/tabler.min.css?1684106062" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css?1684106062" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css?1684106062" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css?1684106062" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css?1684106062" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
@@ -228,16 +228,16 @@
         </div>
     </div>
     <!-- Libs JS -->
-    <script src="./dist/libs/apexcharts/dist/apexcharts.min.js?1684106062" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1684106062" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world.js?1684106062" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js?1684106062" defer></script>
+    <script src="/dist/libs/apexcharts/dist/apexcharts.min.js?1684106062" defer></script>
+    <script src="/dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1684106062" defer></script>
+    <script src="/dist/libs/jsvectormap/dist/maps/world.js?1684106062" defer></script>
+    <script src="/dist/libs/jsvectormap/dist/maps/world-merc.js?1684106062" defer></script>
     {{-- Chart js --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
     <!-- Tabler Core -->
-    <script src="./dist/js/tabler.min.js?1684106062" defer></script>
-    <script src="./dist/js/demo.min.js?1684106062" defer></script>
+    <script src="/dist/js/tabler.min.js?1684106062" defer></script>
+    <script src="/dist/js/demo.min.js?1684106062" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/js/tabler.min.js"></script>
     <script>
         // @formatter:off

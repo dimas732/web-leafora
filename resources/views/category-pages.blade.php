@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Produk Buah - LeaFora</title>
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/Stylekategori.css') }}" />
+    <link rel="stylesheet" href="/templates/ogani-master/Stylekategori.css" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 </head>
@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="header__logo">
             <a href="{{ route('landing-page') }}">
-                <img src="{{ asset('templates/ogani-master/img/leafora.png') }}" alt="LEAFORA">
+                <img src="/templates/ogani-master/img/leafora.png" alt="LEAFORA">
                 <span>LEAFORA</span>
             </a>
         </div>

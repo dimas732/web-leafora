@@ -20,13 +20,16 @@
                         <div class="product-img">
                             <img src="{{ asset('storage/' . $product->picture) }}" alt="">
                             <div class="product-action">
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Add to Cart
-                                </button>
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-success"><i
+                                            class="fas fa-shopping-cart"></i>Add To Cart</button>
+                                </form>
                             </div>
                         </div>
                         <div class="product-info">
-                            <h5 class="text-capitalize">{{ $product->name }}</h5>
+                            <h5 class="text-capitalize"><a href="{{ route('product.detail', $product->id) }}"
+                                    class="text-capitalize">{{ $product->name }}</a></h5>
                             <p class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                         </div>
                     </div>

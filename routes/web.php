@@ -77,6 +77,10 @@ Route::get('/about-us', function() {
     return view('about-us');
 })->name('about-us');
 
+Route::get('/contact-us', function () {
+    return view('contact');
+})->name('contact-us');
+
 // Route::get('/checkout', [CheckoutController::class, 'index'])
 //     ->name('checkout.index');
 

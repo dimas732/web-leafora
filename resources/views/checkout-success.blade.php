@@ -13,14 +13,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/bootstrap.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/font-awesome.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/elegant-icons.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/nice-select.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/jquery-ui.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/owl.carousel.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/slicknav.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/style.css" type="text/css">
+
+    <style>
+        .btn-login-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            background-color: #8BC34A;
+            /* hijau */
+            color: #fff;
+            padding: 10px 22px;
+
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-login-green i {
+            font-size: 14px;
+        }
+
+        .btn-login-green:hover {
+            background-color: #7CB342;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 
 <body>
@@ -33,7 +63,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="./templates/ogani-master/img/language.png" alt=""></a>
+            <a href="#"><img src="/templates/ogani-master/img/language.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -79,7 +109,17 @@
                 <div class="row">
                     <div class="header__top__right">
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            @auth
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="btn-login-green"><i
+                                            class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
+                                </form>
+                            @else
+                                <a href="{{ route('login') }}" class="btn-login-green">
+                                    <i class="fa fa-user"></i> Login
+                                </a>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -89,27 +129,25 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="index.html"><img src="./templates/ogani-master/img/leafora.png" alt=""></a>
+                        <a href="index.html"><img src="/templates/ogani-master/img/leafora.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a class="hv" style="color: #56ab2f" href="./index.html">Home</a></li>
-                            <li class="active"><a class="hv" href="./shop-grid.html">Shop</a></li>
-                            <li><a class="hv" href="./checkout.html">Checkout</a></li>
+                            <li><a class="hv" style="color: #56ab2f" href="{{ route('landing-page') }}">Home</a>
+                            </li>
+                            <li class="active"><a class="hv" href="{{ route('shop-grid') }}">Shop</a></li>
                             <li><a class="hv" href="./contact.html">Contact</a></li>
-                            <li><a class="hv" href="./About Us.html">About Us</a></li>
+                            <li><a class="hv" href="{{ route('about-us') }}">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="Profi_Pengguna.html"><i class="fa fa-user"></i></a></li>
-                            <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-bag"></i></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>Rp176.200,00</span></div>
                     </div>
                 </div>
             </div>
@@ -169,7 +207,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('./templates/ogani-master/img/checkout.jpg') }}">
+    <section class="breadcrumb-section set-bg" data-setbg="/templates/ogani-master/img/checkout.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -307,14 +345,14 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="{{ asset('./templates/ogani-master/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('./templates/ogani-master/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('./templates/ogani-master/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('./templates/ogani-master/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('./templates/ogani-master/js/jquery.slicknav.js') }}"></script>
-    <script src="{{ asset('./templates/ogani-master/js/mixitup.min.js') }}"></script>
-    <script src="{{ asset('./templates/ogani-master/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('./templates/ogani-master/js/main.js') }}"></script>
+    <script src="/templates/ogani-master/js/jquery-3.3.1.min.js"></script>
+    <script src="/templates/ogani-master/js/bootstrap.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.nice-select.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery-ui.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.slicknav.js"></script>
+    <script src="/templates/ogani-master/js/mixitup.min.js"></script>
+    <script src="/templates/ogani-master/js/owl.carousel.min.js"></script>
+    <script src="/templates/ogani-master/js/main.js"></script>
 </body>
 
 </html>

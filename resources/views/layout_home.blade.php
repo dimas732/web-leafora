@@ -15,14 +15,14 @@
 
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/bootstrap.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/font-awesome.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/elegant-icons.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/nice-select.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/jquery-ui.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/owl.carousel.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/slicknav.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('./templates/ogani-master/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/style.css" type="text/css">
 
     <style>
         .btn-login-green {
@@ -65,13 +65,13 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="./templates/ogani-master/img/logo.png" alt=""></a>
+            <a href="#"><img src="./templates/ogani-master/img/leafora.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="profile.html" class="profile-icon"><i class="fa fa-user-circle"></i></a></li>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                {{-- <li><a href="profile.html" class="profile-icon"><i class="fa fa-user-circle"></i></a></li> --}}
+                {{-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> --}}
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
             </ul>
         </div>
         <div class="humberger__menu__widget">
@@ -85,14 +85,23 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="login.html"><i class="fa fa-user"></i> Login</a>
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="btn-login-green"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="btn-login-green">
+                        <i class="fa fa-user"></i> Login
+                    </a>
+                @endauth
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="{{ route('landing-page') }}">Home</a></li>
                 <li><a href="{{ route('shop-grid') }}">Shop</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="{{ route('contact-us') }}">Contact</a></li>
                 <li><a href="{{ route('about-us') }}">About Us</a></li>
             </ul>
         </nav>
@@ -105,8 +114,7 @@
         </div> --}}
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> leafora@gmail.com</li>
             </ul>
         </div>
     </div>
@@ -136,7 +144,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="{{ route('landing-page') }}"><img src="./templates/ogani-master/img/leafora.png"
+                        <a href="{{ route('landing-page') }}"><img src="/templates/ogani-master/img/leafora.png"
                                 alt=""></a>
                     </div>
                 </div>
@@ -146,7 +154,7 @@
                             <li><a class="hv" style="color: #56ab2f" href="{{ route('landing-page') }}">Home</a>
                             </li>
                             <li class="active"><a class="hv" href="{{ route('shop-grid') }}">Shop</a></li>
-                            <li><a class="hv" href="./contact.html">Contact</a></li>
+                            <li><a class="hv" href="{{ route('contact-us') }}">Contact</a></li>
                             <li><a class="hv" href="{{ route('about-us') }}">About Us</a></li>
                         </ul>
                     </nav>
@@ -240,12 +248,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="./templates/ogani-master/img/banner/banner-1.jpg" alt="">
+                        <img src="/templates/ogani-master/img/banner/banner-1.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="./templates/ogani-master/img/banner/banner-2.jpg" alt="">
+                        <img src="/templates/ogani-master/img/banner/banner-2.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -264,8 +272,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/lp-1.jpg"
-                                            alt="">
+                                        <img src="/templates/ogani-master/img/latest-product/lp-1.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Bayam </h6>
@@ -274,7 +281,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/featured/ayam.jpg" alt="">
+                                        <img src="/templates/ogani-master/img/featured/ayam.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Ayam</h6>
@@ -283,7 +290,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/garam.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/garam.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -295,7 +302,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/product/jahe.jpg" alt="">
+                                        <img src="/templates/ogani-master/img/product/jahe.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Jahe</h6>
@@ -304,8 +311,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/lele.png"
-                                            alt="">
+                                        <img src="/templates/ogani-master/img/latest-product/lele.png" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Ikan Lele</h6>
@@ -314,7 +320,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/masakorenteng.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/masakorenteng.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -333,7 +339,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/telur_ayam.png"
+                                        <img src="/templates/ogani-master/img/latest-product/telur_ayam.png"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -343,7 +349,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/ceker-removebg-preview.png"
+                                        <img src="/templates/ogani-master/img/latest-product/ceker-removebg-preview.png"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -353,7 +359,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/Cabe-Rawit.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/Cabe-Rawit.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -365,7 +371,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/Tomato.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/Tomato.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -375,7 +381,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/beras1kg.png"
+                                        <img src="/templates/ogani-master/img/latest-product/beras1kg.png"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -385,7 +391,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/minyakkita.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/minyakkita.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -404,7 +410,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/kangkung.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/kangkung.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -415,7 +421,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/ceker-removebg-preview.png"
+                                        <img src="/templates/ogani-master/img/latest-product/ceker-removebg-preview.png"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -425,7 +431,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/apel1.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/apel1.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -438,7 +444,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/bawangmerah.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/bawangmerah.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -449,7 +455,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/beraspandan.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/beraspandan.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -459,7 +465,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./templates/ogani-master/img/latest-product/kacangtanah.jpg"
+                                        <img src="/templates/ogani-master/img/latest-product/kacangtanah.jpg"
                                             alt="">
                                     </div>
                                     <div class="latest-product__item__text">
@@ -486,7 +492,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="{{ route('landing-page') }}"><img src="./templates/ogani-master/img/leafora.png"
+                            <a href="{{ route('landing-page') }}"><img src="/templates/ogani-master/img/leafora.png"
                                     alt=""></a>
                         </div>
                         <ul>
@@ -545,7 +551,7 @@
                             </p>
                         </div>
                         <div class="footer__copyright__payment"><img
-                                src="./templates/ogani-master/img/payment-item.png" alt=""></div>
+                                src="/templates/ogani-master/img/payment-item.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -554,14 +560,14 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="./templates/ogani-master/js/jquery-3.3.1.min.js"></script>
-    <script src="./templates/ogani-master/js/bootstrap.min.js"></script>
-    <script src="./templates/ogani-master/js/jquery.nice-select.min.js"></script>
-    <script src="./templates/ogani-master/js/jquery-ui.min.js"></script>
-    <script src="./templates/ogani-master/js/jquery.slicknav.js"></script>
-    <script src="./templates/ogani-master/js/mixitup.min.js"></script>
-    <script src="./templates/ogani-master/js/owl.carousel.min.js"></script>
-    <script src="./templates/ogani-master/js/main.js"></script>
+    <script src="/templates/ogani-master/js/jquery-3.3.1.min.js"></script>
+    <script src="/templates/ogani-master/js/bootstrap.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.nice-select.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery-ui.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.slicknav.js"></script>
+    <script src="/templates/ogani-master/js/mixitup.min.js"></script>
+    <script src="/templates/ogani-master/js/owl.carousel.min.js"></script>
+    <script src="/templates/ogani-master/js/main.js"></script>
 
     <script>
         $(document).ready(function() {

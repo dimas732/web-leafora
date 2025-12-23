@@ -15,11 +15,23 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('Admin.Order.index', [
-            'orders' => Order::get()
-        ]);
+        $query = Order::query();
+
+        if ($request->filled('q')) {
+            $q = $request->q;
+
+            $query->where(function ($sub) use ($q) {
+                $sub->where('invoice', 'like', "%{$q}%")
+                    ->orWhere('status', 'like', "%{$q}%")
+                    ->orWhere('cust_name', 'like', "%{$q}%");
+            });
+        }
+
+        $orders = $query->latest()->paginate(10)->withQueryString();
+
+        return view('Admin.Order.index', compact('orders'));
     }
 
     /**
@@ -64,7 +76,7 @@ class OrderController extends Controller
             $order = Order::create([
                 'cust_name'     => $request->cust_name,
                 'pickup_time'   => $request->pickup_time,
-                'cust_phone'   => $request->cust_phone,
+                'cust_phone'    => $request->cust_phone,
                 'total_price'   => 0
             ]);
 

@@ -28,9 +28,14 @@
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" data-setbg="{{ asset('storage/' . $p->picture) }}">
                                 <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li>
+                                        <form action="{{ route('cart.add', $p->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-success"><i
+                                                    class="fas fa-shopping-cart"></i></button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">

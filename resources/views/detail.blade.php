@@ -13,14 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/elegant-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/slicknav.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('templates/ogani-master/css/style.css') }}">
+    <link rel="stylesheet" href="/templates/ogani-master/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/templates/ogani-master/css/style.css" type="text/css">
 
     <style>
         .btn-login-green {
@@ -67,7 +67,7 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
         </div>
         <div class="humberger__menu__widget">
@@ -87,7 +87,8 @@
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button class="btn-login-green">Logout</button>
+                                <button class="btn-login-green"><i
+                                        class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
                             </form>
                         @else
                             <a href="{{ route('login') }}" class="btn-login-green">
@@ -119,7 +120,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-bag"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -219,14 +220,14 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="{{ asset('templates/ogani-master/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('templates/ogani-master/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('templates/ogani-master/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('templates/ogani-master/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('templates/ogani-master/js/jquery.slicknav.js') }}"></script>
-    <script src="{{ asset('templates/ogani-master/js/mixitup.min.js') }}"></script>
-    <script src="{{ asset('templates/ogani-master/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('templates/ogani-master/js/main.js') }}"></script>
+    <script src="/templates/ogani-master/js/jquery-3.3.1.min.js"></script>
+    <script src="/templates/ogani-master/js/bootstrap.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.nice-select.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery-ui.min.js"></script>
+    <script src="/templates/ogani-master/js/jquery.slicknav.js"></script>
+    <script src="/templates/ogani-master/js/mixitup.min.js"></script>
+    <script src="/templates/ogani-master/js/owl.carousel.min.js"></script>
+    <script src="/templates/ogani-master/js/main.js"></script>
 
     <script>
         const qtyInput = document.querySelector('input[name="quantity"]');

@@ -2,7 +2,7 @@
 
 @php
     $preTitle = 'Data';
-    $title = 'Create - Categories';
+    $title = 'Create - Order';
 @endphp
 
 @section('content')
