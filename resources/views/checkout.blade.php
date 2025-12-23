@@ -21,6 +21,36 @@
     <link rel="stylesheet" href="./templates/ogani-master/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="./templates/ogani-master/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="./templates/ogani-master/css/style.css" type="text/css">
+
+    <style>
+        .btn-login-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            background-color: #8BC34A;
+            /* hijau */
+            color: #fff;
+            padding: 10px 22px;
+
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-login-green i {
+            font-size: 14px;
+        }
+
+        .btn-login-green:hover {
+            background-color: #7CB342;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 
 <body>
@@ -49,11 +79,12 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="./checkout.html">Checkout</a></li>
-                <li><a href="./About Us.html">About Us</a></li>
+                <li><a class="hv" href="{{ route('landing-page') }}">Home</a>
+                </li>
+                <li class="active"><a class="hv" href="{{ route('shop-grid') }}">Shop</a></li>
+                <li><a class="hv" style="color: #56ab2f" href="{{ route('contact-us') }}">Contact</a>
+                </li>
+                <li><a class="hv" href="{{ route('about-us') }}">About Us</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -105,11 +136,12 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a class="hv" style="color: #56ab2f" href="./index.html">Home</a></li>
-                            <li class="active"><a class="hv" href="./shop-grid.html">Shop</a></li>
-                            <li><a class="hv" href="./checkout.html">Checkout</a></li>
-                            <li><a class="hv" href="./contact.html">Contact</a></li>
-                            <li><a class="hv" href="./About Us.html">About Us</a></li>
+                            <li><a class="hv" href="{{ route('landing-page') }}">Home</a>
+                            </li>
+                            <li class="active"><a class="hv" href="{{ route('shop-grid') }}">Shop</a></li>
+                            <li><a class="hv" style="color: #56ab2f" href="{{ route('contact-us') }}">Contact</a>
+                            </li>
+                            <li><a class="hv" href="{{ route('about-us') }}">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
